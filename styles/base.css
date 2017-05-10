@@ -1,0 +1,31 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-size: 1em;
+  font-weight: normal;
+  font-style: normal;
+  width: 100%;
+}
+
+html, body {
+  height: 100%;
+}
+
+section {
+  height: 100%;
+  border: 1px solid red;
+  padding: 1em;
+}
+
+em {
+  font-style: italic;
+}
+
+i {
+  width: auto;
+}
+
+img {
+  max-width: 100%;
+}
