@@ -1,0 +1,29 @@
+nav {
+  position: fixed;
+  left: 1em;
+  bottom: 2em;
+}
+
+footer {
+  position: fixed;
+  bottom: 1em;
+  right: 1em;
+  text-align: right;
+}
+
+@media screen and (min-width: 500px) {
+  nav {
+    right: 1em;
+    bottom: 1em;
+    left: auto;
+  }
+
+  footer {
+    top: 1em;
+    bottom: auto;
+  }
+
+  .fa-chevron-circle-up {
+    display: none;
+  }
+}
