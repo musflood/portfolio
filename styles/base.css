@@ -27,5 +27,6 @@ i {
 }
 
 img {
+  width: auto;
   max-width: 100%;
 }

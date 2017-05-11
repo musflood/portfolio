@@ -12,6 +12,13 @@ function Project(rawProjectObj) {
 
 Project.prototype.toHtml = function () {
   var $newProject = $('.project.template').clone();
+  $newProject.removeClass('template');
+  $newProject.find('a').attr('href', this.url);
+  $newProject.find('img').attr('src', this.img).attr('alt', this.title);
+  $newProject.find('h3').html(this.title);
+  $newProject.find('time').attr('datetime', this.dateUpdated).html('updated ' + parseInt((new Date() - new Date(this.dateUpdated))/60/60/24/1000) + ' days ago');
+  $newProject.find('div').html(this.description);
+  return $newProject;
 };
 
 rawData.sort(function(a,b) {
