@@ -2,7 +2,7 @@ nav li {
   list-style: none;
 }
 
-footer li {
+#social li {
   display: inline-block;
   width: auto;
   list-style: none;
@@ -19,7 +19,7 @@ footer li {
     width: auto;
   }
 
-  footer li {
+  #social li {
     display: block;
     text-align: right;
   }
