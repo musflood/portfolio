@@ -1,5 +1,23 @@
+#name-card {
+  background: #000;
+  color: #46FC3E;
+}
+
+#name-card .fa-stop {
+  display: inline;
+}
+
+#info-card {
+  background: #58B792;
+}
+
+#projects-card {
+  background: #F5A339;
+}
+
 nav li {
   list-style: none;
+  font-size: 2em;
 }
 
 #social li {
@@ -7,6 +25,9 @@ nav li {
   width: auto;
   list-style: none;
   text-align: center;
+  font-size: 2em;
+  line-height: 0;
+  padding-left: 1em;
 }
 
 @media screen and (min-width: 500px) {
@@ -22,5 +43,7 @@ nav li {
   #social li {
     display: block;
     text-align: right;
+    padding-left: 0;
+    padding-bottom: 1em;
   }
 }

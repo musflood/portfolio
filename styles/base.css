@@ -14,12 +14,26 @@ html, body {
 
 section {
   height: 100%;
-  border: 1px solid red;
   padding: 1em;
+}
+
+h1 {
+  font-family: 'VT323', monospace;
+  font-size: 4em;
+  letter-spacing: .1em;
 }
 
 em {
   font-style: italic;
+}
+
+a {
+  color: #46FC3E;
+  text-decoration: none;
+}
+
+a:hover {
+  color: #fff;
 }
 
 i {

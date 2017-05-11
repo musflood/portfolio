@@ -3,10 +3,13 @@
   <head>
     <title>Megan Flood | Programming Portfolio</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!-- libraries -->
+    <!-- fonts -->
     <link href='//cdn.jsdelivr.net/devicons/1.8.0/css/devicons.min.css' rel='stylesheet'>
     <link rel="stylesheet" href="styles/font-awesome/css/font-awesome.min.css">
+    <link href="https://fonts.googleapis.com/css?family=VT323" rel="stylesheet">
+    <!-- libraries -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.8/handlebars.js"></script>
     <!-- styling -->
     <link rel="stylesheet" type="text/css" href="styles/base.css">
     <link rel="stylesheet" type="text/css" href="styles/layout.css">
@@ -15,7 +18,7 @@
   <body>
 
     <section id="name-card">
-      <h1>megan flood</h1>
+      <h1>megan f<span class="hide"> </span>lood&#8718;</h1>
     </section>
 
     <section id="info-card">
@@ -75,7 +78,10 @@
         <li>Design by Megan Flood</li>
       </ul>
     </footer>
-    
+
+    <script id="project-template" type="text/x-handlebars-template">
+      
+    </script>
     <script src="scripts/sampleProjects.js"></script>
     <script src="scripts/project.js"></script>
     <script src="scripts/projectView.js"></script>
