@@ -16,7 +16,7 @@ Project.prototype.toHtml = function () {
   $newProject.find('a').attr('href', this.url);
   $newProject.find('img').attr('src', this.img).attr('alt', this.title);
   $newProject.find('h3').html(this.title);
-  $newProject.find('time').attr('datetime', this.dateUpdated).html('updated ' + parseInt((new Date() - new Date(this.dateUpdated))/60/60/24/1000) + ' days ago');
+  $newProject.find('time').attr('datetime', this.dateUpdated).html('updated ' + parseInt((new Date() - new Date(this.dateUpdated))/1000/60/60/24) + ' days ago');
   $newProject.find('div').html(this.description);
   return $newProject;
 };
