@@ -4,7 +4,7 @@
     <title>Megan Flood | Programming Portfolio</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- fonts -->
-    <link href='//cdn.jsdelivr.net/devicons/1.8.0/css/devicons.min.css' rel='stylesheet'>
+    <link href='https://cdn.jsdelivr.net/devicons/1.8.0/css/devicons.min.css' rel='stylesheet'>
     <link rel="stylesheet" href="styles/font-awesome/css/font-awesome.min.css">
     <link href="https://fonts.googleapis.com/css?family=VT323" rel="stylesheet">
     <!-- libraries -->
@@ -18,7 +18,7 @@
   <body>
 
     <section id="name-card">
-      <h1>megan f<span class="hide"> </span>lood&#8718;</h1>
+      <h1>> megan f<span class="hide"> </span>lood&#8718;</h1>
     </section>
 
     <section id="info-card">
@@ -43,22 +43,14 @@
     <section id="projects-card">
       <div id="project-list">
         <h2>Projects</h2>
-        <div class="project template">
-          <a href="">
-            <img src="mouse.png" alt="">
-          </a>
-          <h3><a href="">Title</a></h3>
-          <time datetime="2000-01-01">Last Updated</time>
-          <div>Desciption</div>
-        </div>
       </div>
     </section>
 
     <nav class="hide">
       <ul>
-        <li><a href="#name-card">Home</a></li>
-        <li><a href="#info-card">About</a></li>
-        <li><a href="#projects-card">Projects</a></li>
+        <li><a href="#" class="tab" data-locate="name-card">Home</a></li>
+        <li><a href="#" class="tab" data-locate="info-card">About</a></li>
+        <li><a href="#" class="tab" data-locate="projects-card">Projects</a></li>
       </ul>
     </nav>
 
@@ -67,7 +59,7 @@
         <li><a href="https://github.com/musflood" target="_blank"><i class="fa fa-github-alt"></i></a></li>
         <li><a href="https://medium.com/@mflood" target="_blank"><i class="fa fa-medium"></i></a></li>
         <li><a href=""><i class="fa fa-envelope"></i></a></li>
-        <li><a href=""><i class="fa fa-chevron-circle-up"></i></a></li>
+        <li><a href="#"><i class="fa fa-chevron-circle-up"></i></a></li>
       </ul>
     </div>
 
@@ -80,7 +72,14 @@
     </footer>
 
     <script id="project-template" type="text/x-handlebars-template">
-      
+      <a href={{url}}>
+        <div class="project">
+          <img src={{img}} alt={{title}}>
+          <h3>{{title}}</h3>
+          <time datetime={{dateUpdated}}>updated {{toDaysAgo dateUpdated}} days ago</time>
+          <div>{{{description}}}</div>
+        </div>
+      </a>
     </script>
     <script src="scripts/sampleProjects.js"></script>
     <script src="scripts/project.js"></script>
