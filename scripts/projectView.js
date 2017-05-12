@@ -6,27 +6,25 @@ menuView.handleArrowClick = function() {
   $('.fa-chevron-circle-up').on('click',function(e) {
     e.preventDefault();
     $('nav').toggleClass('hide');
+    $(this).toggleClass('down');
   });
 };
 
 menuView.handleTabClick = function() {
   $('nav').on('click', '.tab',function() {
     $('html, body').animate({
-      scrollTop: ($(`#${$(this).data('locate')}`).offset().top)
+      scrollTop: ($(`#${$(this).data('locate')}`).offset().top),
     }, 250);
   });
 };
 
 menuView.typeOutWords = function($element) {
-  // $element.hide();
   var allText = $element.html();
-  console.log(allText);
   var letters = [];
   var foundTag = 0;
   var letterWithBreak = '';
   for (var i = 0; i < allText.length; i++) {
     foundTag += allText[i+1] === '<' ? 1 : 0;
-    console.log(foundTag);
     if(!foundTag) {
       letters.push(allText[i]);
     } else {
@@ -38,15 +36,19 @@ menuView.typeOutWords = function($element) {
       }
     }
   }
-  console.log(letters);
-  i = 0;
-  var interval = setInterval(function() {
-    $element.html(letters.slice(0, i).join(''));
-    if (i === letters.length) {
-      clearInterval(interval);
-    }
-    i++;
-  }, 300)
+  $element.html('');
+  setTimeout(function() {
+    $element.siblings('.cursor').css('animation', 'none');
+    i = 0;
+    var interval = setInterval(function() {
+      $element.html(letters.slice(0, i).join(''));
+      if (i === letters.length) {
+        clearInterval(interval);
+        $element.siblings('.cursor').css('animation', '3s blink infinite');
+      }
+      i++;
+    }, 300);
+  }, 2500)
 }
 
 $(document).ready(function() {

@@ -13,6 +13,7 @@ html, body {
 
 body {
   background: #000;
+  font-family: 'VT323', monospace;
   color: #46FC3E;
 }
 
@@ -22,7 +23,6 @@ section {
 }
 
 h1 {
-  font-family: 'VT323', monospace;
   font-size: 3.19em;
   letter-spacing: .1em;
 }
@@ -31,6 +31,18 @@ h1 {
   h1 {
     font-size: 4em;
   }
+}
+
+h2 {
+  font-size: 3.75em;
+}
+
+h3 {
+  font-size: 2.75em;
+}
+
+p, i, time, li {
+  font-size: 1.5em;
 }
 
 em {
