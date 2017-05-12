@@ -1,18 +1,17 @@
-#name-card {
-  background: #000;
-  color: #46FC3E;
+@keyframes blink {
+  0%, 24% {
+    opacity: 0;
+  }
+  25%, 75% {
+    opacity: 1;
+  }
+  76%, 100% {
+    opacity: 0;
+  }
 }
 
-#name-card .fa-stop {
-  display: inline;
-}
-
-#info-card {
-  background: #58B792;
-}
-
-#projects-card {
-  background: #F5A339;
+#cursor {
+  animation: 3s blink infinite;
 }
 
 nav li {
