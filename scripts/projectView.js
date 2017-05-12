@@ -7,6 +7,15 @@ menuView.handleArrowClick = function() {
     e.preventDefault();
     $('nav').toggleClass('hide');
     $(this).toggleClass('down');
+    if ($(this).hasClass('down')) {
+      $('#social').animate({
+        bottom: `+=${$('nav').height()}`,
+      }, 100);
+    } else {
+      $('#social').animate({
+        bottom: `-=${$('nav').height()}`,
+      }, 100);
+    }
   });
 };
 

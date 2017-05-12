@@ -4,8 +4,17 @@
 
 nav {
   position: fixed;
-  left: 1em;
-  bottom: 3em;
+  left: 0;
+  bottom: 0;
+  transition: bottom 100ms;
+  background: #000;
+  padding: 1em;
+  width: 100%;
+}
+
+nav.hide {
+  display: block;
+  bottom: -10em;
 }
 
 #social {
@@ -17,13 +26,13 @@ nav {
 
 @media screen and (min-width: 640px) {
   nav {
-    right: 1em;
-    bottom: 1em;
+    right: 0;
     left: auto;
+    transition: initial;
   }
 
   nav.hide {
-    display: block;
+    bottom: 0;
   }
 
   #social {
