@@ -7,8 +7,6 @@ nav {
   left: 0;
   bottom: 0;
   transition: bottom 100ms;
-  background: #000;
-  padding: 1em;
   width: 100%;
 }
 
@@ -29,6 +27,7 @@ nav.hide {
     right: 0;
     left: auto;
     transition: initial;
+    width: auto;
   }
 
   nav.hide {

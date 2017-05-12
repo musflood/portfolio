@@ -3,7 +3,7 @@
 var projects = [];
 
 function Project(rawProjectObj) {
-  this.img = rawProjectObj.img || 'mouse.png';
+  this.img = rawProjectObj.img || 'imgs/mouse.png';
   this.title = rawProjectObj.title;
   this.url = rawProjectObj.url;
   this.dateUpdated = rawProjectObj.dateUpdated;

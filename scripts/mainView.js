@@ -1,8 +1,8 @@
 'use strict';
 
-var menuView = {}
+var mainView = {}
 
-menuView.handleArrowClick = function() {
+mainView.handleMenuArrowClick = function() {
   $('.fa-chevron-circle-up').on('click',function(e) {
     e.preventDefault();
     $('nav').toggleClass('hide');
@@ -19,7 +19,7 @@ menuView.handleArrowClick = function() {
   });
 };
 
-menuView.handleTabClick = function() {
+mainView.handleMenuTabClick = function() {
   $('nav').on('click', '.tab',function() {
     $('html, body').animate({
       scrollTop: ($(`#${$(this).data('locate')}`).offset().top),
@@ -27,7 +27,7 @@ menuView.handleTabClick = function() {
   });
 };
 
-menuView.typeOutWords = function($element) {
+mainView.typeOutWords = function($element) {
   var allText = $element.html();
   var letters = [];
   var foundTag = 0;
@@ -61,7 +61,7 @@ menuView.typeOutWords = function($element) {
 }
 
 $(document).ready(function() {
-  menuView.handleArrowClick();
-  menuView.handleTabClick();
-  menuView.typeOutWords($('#name-card .text-to-write'));
+  mainView.handleMenuArrowClick();
+  mainView.handleMenuTabClick();
+  mainView.typeOutWords($('#name-card .text-to-write'));
 });

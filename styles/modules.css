@@ -16,7 +16,8 @@
 }
 
 nav {
-  
+  background: #000;
+  padding: 1em;
 }
 
 nav li {
@@ -47,6 +48,10 @@ nav li {
 }
 
 @media screen and (min-width: 640px) {
+  nav {
+    padding-left: 0;
+  }
+
   nav ul {
     text-align: right;
   }
@@ -55,6 +60,10 @@ nav li {
     display: inline-block;
     width: auto;
     margin-left: 1em;
+  }
+
+  nav li:first-child {
+    margin-left: .5em;
   }
 
   #social li {
