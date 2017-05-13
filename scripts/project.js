@@ -3,7 +3,7 @@
 var projects = [];
 
 function Project(rawProjectObj) {
-  this.img = rawProjectObj.img || 'mouse.png';
+  this.img = rawProjectObj.img || 'imgs/mouse.png';
   this.title = rawProjectObj.title;
   this.url = rawProjectObj.url;
   this.dateUpdated = rawProjectObj.dateUpdated;
@@ -11,15 +11,13 @@ function Project(rawProjectObj) {
 }
 
 Project.prototype.toHtml = function () {
-  var $newProject = $('.project.template').clone();
-  $newProject.removeClass('template');
-  $newProject.find('a').attr('href', this.url);
-  $newProject.find('img').attr('src', this.img).attr('alt', this.title);
-  $newProject.find('h3').html(this.title);
-  $newProject.find('time').attr('datetime', this.dateUpdated).html('updated ' + parseInt((new Date() - new Date(this.dateUpdated))/1000/60/60/24) + ' days ago');
-  $newProject.find('div').html(this.description);
-  return $newProject;
+  var templateRender = Handlebars.compile($('#project-template').html());
+  return templateRender(this);
 };
+
+Handlebars.registerHelper('toDaysAgo', function(date) {
+  return parseInt((new Date() - new Date(date))/1000/60/60/24);
+});
 
 rawData.sort(function(a,b) {
   return (new Date(b.dateUpdated)) - (new Date(a.dateUpdated));

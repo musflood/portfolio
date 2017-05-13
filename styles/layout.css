@@ -1,11 +1,18 @@
-.template, .hide {
+.hide {
   display: none;
 }
 
 nav {
   position: fixed;
-  left: 1em;
-  bottom: 2em;
+  left: 0;
+  bottom: 0;
+  transition: bottom 100ms;
+  width: 100%;
+}
+
+nav.hide {
+  display: block;
+  bottom: -10em;
 }
 
 #social {
@@ -15,15 +22,16 @@ nav {
   text-align: right;
 }
 
-@media screen and (min-width: 500px) {
+@media screen and (min-width: 640px) {
   nav {
-    right: 1em;
-    bottom: 1em;
+    right: 0;
     left: auto;
+    transition: initial;
+    width: auto;
   }
 
   nav.hide {
-    display: block;
+    bottom: 0;
   }
 
   #social {

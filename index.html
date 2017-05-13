@@ -3,19 +3,23 @@
   <head>
     <title>Megan Flood | Programming Portfolio</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!-- libraries -->
-    <link href='//cdn.jsdelivr.net/devicons/1.8.0/css/devicons.min.css' rel='stylesheet'>
+    <!-- fonts -->
+    <link href='https://cdn.jsdelivr.net/devicons/1.8.0/css/devicons.min.css' rel='stylesheet'>
     <link rel="stylesheet" href="styles/font-awesome/css/font-awesome.min.css">
+    <link href="https://fonts.googleapis.com/css?family=VT323" rel="stylesheet">
+    <!-- libraries -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.8/handlebars.js"></script>
     <!-- styling -->
     <link rel="stylesheet" type="text/css" href="styles/base.css">
     <link rel="stylesheet" type="text/css" href="styles/layout.css">
     <link rel="stylesheet" type="text/css" href="styles/modules.css">
+    <link rel="icon" type="image/x-icon" href="imgs/mouseicon.png">
   </head>
   <body>
 
     <section id="name-card">
-      <h1>megan flood</h1>
+      <h1>> <span class="text-to-write">megan f<span class="hide"> </span>lood</span><span class="cursor">&#8718;</span></h1>
     </section>
 
     <section id="info-card">
@@ -25,6 +29,7 @@
         <i class="devicons devicons-python"></i>
         <i class="devicons devicons-html5"></i>
         <i class="devicons devicons-css3"></i>
+        <i class="devicons devicons-javascript_badge"></i>
         <i class="devicons devicons-nodejs_small"></i>
         <i class="devicons devicons-jquery"></i>
       </aside>
@@ -40,22 +45,14 @@
     <section id="projects-card">
       <div id="project-list">
         <h2>Projects</h2>
-        <div class="project template">
-          <a href="">
-            <img src="mouse.png" alt="">
-          </a>
-          <h3><a href="">Title</a></h3>
-          <time datetime="2000-01-01">Last Updated</time>
-          <div>Desciption</div>
-        </div>
       </div>
     </section>
 
     <nav class="hide">
       <ul>
-        <li><a href="#name-card">Home</a></li>
-        <li><a href="#info-card">About</a></li>
-        <li><a href="#projects-card">Projects</a></li>
+        <li><a href="#" class="tab" data-locate="name-card">Home</a></li>
+        <li><a href="#" class="tab" data-locate="info-card">About</a></li>
+        <li><a href="#" class="tab" data-locate="projects-card">Projects</a></li>
       </ul>
     </nav>
 
@@ -64,7 +61,7 @@
         <li><a href="https://github.com/musflood" target="_blank"><i class="fa fa-github-alt"></i></a></li>
         <li><a href="https://medium.com/@mflood" target="_blank"><i class="fa fa-medium"></i></a></li>
         <li><a href=""><i class="fa fa-envelope"></i></a></li>
-        <li><a href=""><i class="fa fa-chevron-circle-up"></i></a></li>
+        <li><a href="#"><i class="fa fa-chevron-circle-up"></i></a></li>
       </ul>
     </div>
 
@@ -75,9 +72,19 @@
         <li>Design by Megan Flood</li>
       </ul>
     </footer>
-    
+
+    <script id="project-template" type="text/x-handlebars-template">
+      <a href={{url}}>
+        <div class="project">
+          <img src={{img}} alt={{title}}>
+          <h3>{{title}}</h3>
+          <time datetime={{dateUpdated}}>updated {{toDaysAgo dateUpdated}} days ago</time>
+          <div>{{{description}}}</div>
+        </div>
+      </a>
+    </script>
     <script src="scripts/sampleProjects.js"></script>
     <script src="scripts/project.js"></script>
-    <script src="scripts/projectView.js"></script>
+    <script src="scripts/mainView.js"></script>
   </body>
 </html>
