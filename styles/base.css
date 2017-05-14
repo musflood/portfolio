@@ -18,7 +18,7 @@ body {
 }
 
 section {
-  height: 100%;
+  min-height: 100%;
   padding: 1em;
 }
 
@@ -62,6 +62,10 @@ a {
 
 a:hover {
   color: #fff;
+}
+
+a:focus {
+  outline: none;
 }
 
 i {

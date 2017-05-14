@@ -39,7 +39,7 @@ nav.hide {
     bottom: auto;
   }
 
-  .fa-chevron-circle-up {
+  #nav-arrow, .fa-chevron-circle-up {
     display: none;
   }
 }

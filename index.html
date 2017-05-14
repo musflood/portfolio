@@ -18,11 +18,29 @@
   </head>
   <body>
 
+    <nav class="hide">
+      <ul>
+        <li><a href="#" class="tab" data-locate="name-card">Home</a></li>
+        <li><a href="#" class="tab" data-locate="info-card">About</a></li>
+        <li><a href="#" class="tab" data-locate="projects-card">Projects</a></li>
+      </ul>
+    </nav>
+
+    <div id="social">
+      <ul>
+        <li><a href="https://github.com/musflood" target="_blank"><i class="fa fa-github-alt"></i></a></li>
+        <li><a href="https://medium.com/@mflood" target="_blank"><i class="fa fa-medium"></i></a></li>
+        <li><a href=""><i class="fa fa-envelope"></i></a></li>
+        <li><a href="#" id="nav-arrow"><i class="fa fa-chevron-circle-up"></i></a></li>
+      </ul>
+    </div>
+
     <section id="name-card">
       <h1>> <span class="text-to-write">megan f<span class="hide"> </span>lood</span><span class="cursor">&#8718;</span></h1>
     </section>
 
     <section id="info-card">
+      <h1>> <span class="text-to-write">about</span><span class="cursor">&#8718;</span></h1>
       <aside>
         <i class="devicons devicons-git"></i>
         <i class="devicons devicons-java"></i>
@@ -43,27 +61,9 @@
     </section>
 
     <section id="projects-card">
-      <div id="project-list">
-        <h2>Projects</h2>
-      </div>
+      <h1>> <span class="text-to-write">projects</span><span class="cursor">&#8718;</span></h1>
+      <div id="project-list"></div>
     </section>
-
-    <nav class="hide">
-      <ul>
-        <li><a href="#" class="tab" data-locate="name-card">Home</a></li>
-        <li><a href="#" class="tab" data-locate="info-card">About</a></li>
-        <li><a href="#" class="tab" data-locate="projects-card">Projects</a></li>
-      </ul>
-    </nav>
-
-    <div id="social">
-      <ul>
-        <li><a href="https://github.com/musflood" target="_blank"><i class="fa fa-github-alt"></i></a></li>
-        <li><a href="https://medium.com/@mflood" target="_blank"><i class="fa fa-medium"></i></a></li>
-        <li><a href=""><i class="fa fa-envelope"></i></a></li>
-        <li><a href="#"><i class="fa fa-chevron-circle-up"></i></a></li>
-      </ul>
-    </div>
 
     <footer>
       <ul>
@@ -73,9 +73,19 @@
       </ul>
     </footer>
 
+    <svg id="project-img-filter" class="hide" color-interpolation-filters="sRGB">
+      <filter id="monochrome-green">
+        <feColorMatrix type="matrix"
+              values="0.27 0 0 0  0
+                      0.99 0 0 0  0
+                      0.24 0 0 0  0
+                        0  0 0 1  0" />
+      </filter>
+    </svg>
     <script id="project-template" type="text/x-handlebars-template">
       <a href={{url}}>
         <div class="project">
+          <canvas id=img-{{toKabobCase title}}></canvas>
           <img src={{img}} alt={{title}}>
           <h3>{{title}}</h3>
           <time datetime={{dateUpdated}}>updated {{toDaysAgo dateUpdated}} days ago</time>

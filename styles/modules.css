@@ -1,7 +1,3 @@
-#projects-card {
-  height: auto;
-}
-
 @keyframes blink {
   0%, 49% {
     opacity: 1;
@@ -45,6 +41,24 @@ nav li {
 
 .down {
   transform: rotate(180deg);
+}
+
+nav a, #social a {
+  padding: 0 .1em;
+}
+
+nav a:focus, #social a:focus {
+  background: #46FC3E;
+  color: #000;
+}
+
+.project canvas {
+  -webkit-filter: url(#monochrome-green);
+  filter:  url(#monochrome-green);
+}
+
+.project img {
+  width: 20%;
 }
 
 @media screen and (min-width: 640px) {

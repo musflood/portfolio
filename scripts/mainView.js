@@ -1,7 +1,9 @@
 'use strict';
 
+// create a library for funcitons on the main view
 var mainView = {}
 
+// event handler for clicking on the menu arrow button to show and hide the nav menu
 mainView.handleMenuArrowClick = function() {
   $('.fa-chevron-circle-up').on('click',function(e) {
     e.preventDefault();
@@ -19,15 +21,18 @@ mainView.handleMenuArrowClick = function() {
   });
 };
 
+// event handler for clicking on the nav to scroll to the section clicked
 mainView.handleMenuTabClick = function() {
   $('nav').on('click', '.tab',function() {
     $('html, body').animate({
       scrollTop: ($(`#${$(this).data('locate')}`).offset().top),
     }, 250);
   });
+  $('.tab[data-locate="name-card"]').focus();
 };
 
-mainView.typeOutWords = function($element) {
+// given a text element that is siblings with an element with the class of 'cursor', prints each letter to the DOM one at a time at a given speed after a given delay, both in milliseconds
+mainView.typeOutWords = function($element, delay, speed) {
   var allText = $element.html();
   var letters = [];
   var foundTag = 0;
@@ -56,12 +61,13 @@ mainView.typeOutWords = function($element) {
         $element.siblings('.cursor').css('animation', '3s blink infinite');
       }
       i++;
-    }, 300);
-  }, 2500)
+    }, speed);
+  }, delay)
 }
 
+// add listeners and print the home page on page ready.
 $(document).ready(function() {
   mainView.handleMenuArrowClick();
   mainView.handleMenuTabClick();
-  mainView.typeOutWords($('#name-card .text-to-write'));
+  mainView.typeOutWords($('#name-card .text-to-write'), 2000, 300);
 });
