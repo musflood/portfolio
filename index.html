@@ -41,23 +41,25 @@
 
     <section id="info-card">
       <h1>> <span class="text-to-write">about</span><span class="cursor">&#8718;</span></h1>
-      <aside>
-        <i class="devicons devicons-git"></i>
-        <i class="devicons devicons-java"></i>
-        <i class="devicons devicons-python"></i>
-        <i class="devicons devicons-html5"></i>
-        <i class="devicons devicons-css3"></i>
-        <i class="devicons devicons-javascript_badge"></i>
-        <i class="devicons devicons-nodejs_small"></i>
-        <i class="devicons devicons-jquery"></i>
-      </aside>
-      <main>
-        <p>Hello, my name is Megan Flood and I love working with computers. Though I have a degree in Chemistry from Reed College, I wrote my thesis on the computer modeling of a reaction, <em>no physical chemicals involved!</em> I have been working to expand my knowledge of computer programming, which has so far been limited to some very specialized programs. As such, I have already taken several classes in Python and Java, and am currently taking classes in JavaScript.</p>
+      <div>
+        <aside>
+          <i class="devicons devicons-git"></i>
+          <i class="devicons devicons-python"></i>
+          <i class="devicons devicons-java"></i>
+          <i class="devicons devicons-html5"></i>
+          <i class="devicons devicons-css3"></i>
+          <i class="devicons devicons-javascript_badge"></i>
+          <i class="devicons devicons-jquery"></i>
+          <i class="devicons devicons-nodejs_small"></i>
+        </aside>
+        <main>
+          <p>Hello, my name is Megan Flood and I love working with computers. Though I have a degree in Chemistry from Reed College, I wrote my thesis on the computer modeling of a reaction using the specialized programs of ORCA and GAMESS. I have been expanding my knowledge of computer programming to Python, Java, and various forms of JavaScript. I am always excited to learn new languages and fameworks!</p>
 
-        <p>I also have a deep interest in art and love of creativity. I have experience working in HTML and CSS from a class in Web Design and I am excited to combine this experience with the JavaScript I am currently learning.</p>
+          <p>I also have a deep interest in art and love of creativity. I have experience working in HTML and CSS to design websites, and I apply my creativity to everything I make.</p>
 
-        <p>Outside of messing about on computers, I also enjoy doing art, playing video games, and reading science-fiction and fantasy, especially the Diskworld novels of Terry Pratchett.</p>
-      </main>
+          <p>Outside of messing about on computers, I also enjoy doing art, playing video games, and reading science-fiction and fantasy, especially the Diskworld novels of Terry Pratchett.</p>
+        </main>
+      </div>
     </section>
 
     <section id="projects-card">
@@ -87,7 +89,7 @@
         <div class="project">
           <canvas id=img-{{toKabobCase title}}></canvas>
           <img src={{img}} alt={{title}}>
-          <h3>{{title}}</h3>
+          <h2>{{title}}</h2>
           <time datetime={{dateUpdated}}>updated {{toDaysAgo dateUpdated}} days ago</time>
           <div>{{{description}}}</div>
         </div>

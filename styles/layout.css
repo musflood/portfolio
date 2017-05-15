@@ -12,7 +12,7 @@ nav {
 
 nav.hide {
   display: block;
-  bottom: -10em;
+  bottom: -11em;
 }
 
 #social {
@@ -41,5 +41,13 @@ nav.hide {
 
   #nav-arrow, .fa-chevron-circle-up {
     display: none;
+  }
+
+  #info-card aside {
+    width: 30%;
+  }
+
+  #info-card main {
+    width: 60%;
   }
 }

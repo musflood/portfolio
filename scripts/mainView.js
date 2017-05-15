@@ -5,7 +5,12 @@ var mainView = {}
 
 // event handler for clicking on the menu arrow button to show and hide the nav menu
 mainView.handleMenuArrowClick = function() {
-  $('.fa-chevron-circle-up').on('click',function(e) {
+  // remove green highlight on click for the icons
+  $('#social').on('click', 'a', function() {
+    $(this).blur();
+  });
+
+  $('.fa-chevron-circle-up').on('click', function(e) {
     e.preventDefault();
     $('nav').toggleClass('hide');
     $(this).toggleClass('down');
@@ -23,7 +28,7 @@ mainView.handleMenuArrowClick = function() {
 
 // event handler for clicking on the nav to scroll to the section clicked
 mainView.handleMenuTabClick = function() {
-  $('nav').on('click', '.tab',function() {
+  $('nav').on('click', '.tab', function() {
     $('html, body').animate({
       scrollTop: ($(`#${$(this).data('locate')}`).offset().top),
     }, 250);
