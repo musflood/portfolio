@@ -24,21 +24,19 @@ Project.prototype.renderPixelImage = function() {
   var ctx = $canvas[0].getContext('2d');
   var $img = $canvas.siblings('img');
 
-  $img.on('load',function() {
-    $canvas[0].height = $img.height();
-    $canvas[0].width = $img.width();
+  $canvas[0].height = $img.height();
+  $canvas[0].width = $img.width();
 
-    ctx.mozImageSmoothingEnabled = false;
-    ctx.webkitImageSmoothingEnabled = false;
-    ctx.imageSmoothingEnabled = false;
+  ctx.mozImageSmoothingEnabled = false;
+  ctx.webkitImageSmoothingEnabled = false;
+  ctx.imageSmoothingEnabled = false;
 
-    var scalar = 40 / 100; // set the pixelization factor
+  var scalar = 40 / 100; // set the pixelization factor
 
-    var shrunkWidth = scalar * $canvas.width();
-    var shrunkHeight = scalar * $canvas.height();
-    ctx.drawImage($img[0], 0, 0, shrunkWidth, shrunkHeight);
-    ctx.drawImage($canvas[0], 0, 0, shrunkWidth, shrunkHeight, 0, 0, $canvas.width(), $canvas.height());
-  });
+  var shrunkWidth = scalar * $canvas.width();
+  var shrunkHeight = scalar * $canvas.height();
+  ctx.drawImage($img[0], 0, 0, shrunkWidth, shrunkHeight);
+  ctx.drawImage($canvas[0], 0, 0, shrunkWidth, shrunkHeight, 0, 0, $canvas.width(), $canvas.height());
 };
 
 // takes a string and retuns the same string as kabob case (lower case and with '-' instead of spaces)
@@ -72,6 +70,8 @@ projects.forEach(function(project) {
   if (project.img === 'imgs/mouse.png') {
     $(`#img-${Project.toKabobCase(project.title)}`).hide();
   } else {
-    project.renderPixelImage();
+    $(`#img-${Project.toKabobCase(project.title)}`).siblings('img').on('load', function() {
+      project.renderPixelImage();
+    });
   }
 });

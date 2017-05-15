@@ -28,7 +28,8 @@ mainView.handleMenuArrowClick = function() {
 
 // event handler for clicking on the nav to scroll to the section clicked
 mainView.handleMenuTabClick = function() {
-  $('nav').on('click', '.tab', function() {
+  $('nav').on('click', '.tab', function(e) {
+    e.preventDefault();
     $('html, body').animate({
       scrollTop: ($(`#${$(this).data('locate')}`).offset().top),
     }, 250);
