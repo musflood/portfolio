@@ -2,6 +2,10 @@
   display: none;
 }
 
+.clear-fix {
+  clear: both;
+}
+
 nav {
   position: fixed;
   left: 0;
@@ -12,7 +16,7 @@ nav {
 
 nav.hide {
   display: block;
-  bottom: -10em;
+  bottom: -11em;
 }
 
 #social {
@@ -39,7 +43,23 @@ nav.hide {
     bottom: auto;
   }
 
-  .fa-chevron-circle-up {
+  #nav-arrow, .fa-chevron-circle-up {
     display: none;
   }
+
+  #info-card aside {
+    width: 30%;
+  }
+
+  #info-card main {
+    width: 60%;
+  }
+}
+
+.project .project-image {
+  position: relative;
+}
+
+.project-image canvas {
+  position: absolute;
 }
