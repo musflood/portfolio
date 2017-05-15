@@ -21,7 +21,7 @@
     <nav class="hide">
       <ul>
         <li><a href="#" class="tab" data-locate="name-card">Home</a></li>
-        <li><a href="#" class="tab" data-locate="info-card">About</a></li>
+        <li><a href="#" class="tab" data-locate="info-card">Info</a></li>
         <li><a href="#" class="tab" data-locate="projects-card">Projects</a></li>
       </ul>
     </nav>
@@ -40,7 +40,7 @@
     </section>
 
     <section id="info-card">
-      <h1>> <span class="text-to-write">about</span><span class="cursor">&#8718;</span></h1>
+      <h1>> <span class="text-to-write">info</span><span class="cursor">&#8718;</span></h1>
       <div>
         <aside>
           <i class="devicons devicons-git"></i>
@@ -85,18 +85,25 @@
       </filter>
     </svg>
     <script id="project-template" type="text/x-handlebars-template">
-      <a href={{url}}>
+      <a href={{url}} target="_blank">
         <div class="project">
-          <canvas id=img-{{toKabobCase title}}></canvas>
-          <img src={{img}} alt={{title}}>
+          <div class="project-image-box">
+            <div class="project-image">
+              <canvas id=img-{{toKabobCase title}}></canvas>
+              <img src={{img}} alt={{title}}>
+            </div>
+          </div>
           <h2>{{title}}</h2>
           <time datetime={{dateUpdated}}>updated {{toDaysAgo dateUpdated}} days ago</time>
-          <div>{{{description}}}</div>
+          <a href="#" class="more">Read description ></a>
+          <div class="clear-fix"></div>
+          <div class="desciption hide">{{{description}}}</div>
         </div>
       </a>
     </script>
     <script src="scripts/sampleProjects.js"></script>
     <script src="scripts/project.js"></script>
     <script src="scripts/mainView.js"></script>
+    <script src="scripts/projectView.js"></script>
   </body>
 </html>

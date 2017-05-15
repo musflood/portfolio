@@ -1,7 +1,7 @@
 'use strict';
 
 // create a library for funcitons on the main view
-var mainView = {}
+var mainView = {};
 
 // event handler for clicking on the menu arrow button to show and hide the nav menu
 mainView.handleMenuArrowClick = function() {

@@ -2,6 +2,10 @@
   display: none;
 }
 
+.clear-fix {
+  clear: both;
+}
+
 nav {
   position: fixed;
   left: 0;
@@ -50,4 +54,12 @@ nav.hide {
   #info-card main {
     width: 60%;
   }
+}
+
+.project .project-image {
+  position: relative;
+}
+
+.project-image canvas {
+  position: absolute;
 }

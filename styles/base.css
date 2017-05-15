@@ -24,7 +24,6 @@ section {
 
 @media screen and (min-width: 640px) {
   section {
-    height: 100%;
     padding-right: 4em;
   }
 }
@@ -71,7 +70,7 @@ i {
   width: auto;
 }
 
-img {
+img, canvas {
   width: auto;
   max-width: 100%;
 }

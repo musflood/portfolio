@@ -23,13 +23,17 @@ Project.prototype.renderPixelImage = function() {
   var $canvas = $(`#img-${Project.toKabobCase(this.title)}`);
   var ctx = $canvas[0].getContext('2d');
   var $img = $canvas.siblings('img');
+
   $img.on('load',function() {
     $canvas[0].height = $img.height();
     $canvas[0].width = $img.width();
+
     ctx.mozImageSmoothingEnabled = false;
     ctx.webkitImageSmoothingEnabled = false;
     ctx.imageSmoothingEnabled = false;
+
     var scalar = 40 / 100; // set the pixelization factor
+
     var shrunkWidth = scalar * $canvas.width();
     var shrunkHeight = scalar * $canvas.height();
     ctx.drawImage($img[0], 0, 0, shrunkWidth, shrunkHeight);
@@ -69,7 +73,5 @@ projects.forEach(function(project) {
     $(`#img-${Project.toKabobCase(project.title)}`).hide();
   } else {
     project.renderPixelImage();
-    $(`#img-${Project.toKabobCase(project.title)}`).siblings('img').hide();
   }
-
 });
