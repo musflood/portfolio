@@ -64,7 +64,7 @@ mainView.typeOutWords = function($element, delay, speed) {
       $element.html(letters.slice(0, i).join(''));
       if (i === letters.length) {
         clearInterval(interval);
-        $element.siblings('.cursor').css('animation', '3s blink infinite');
+        $element.siblings('.cursor').css('animation', '2.5s blink infinite');
       }
       i++;
     }, speed);
@@ -75,5 +75,5 @@ mainView.typeOutWords = function($element, delay, speed) {
 $(document).ready(function() {
   mainView.handleMenuArrowClick();
   mainView.handleMenuTabClick();
-  mainView.typeOutWords($('#name-card .text-to-write'), 2000, 300);
+  mainView.typeOutWords($('#name-card .text-to-write'), 1000, 300);
 });
