@@ -21,7 +21,7 @@ Project.prototype.toHtml = function() {
 // takes a string and retuns the same string as kabob case (lower case and with '-' instead of spaces)
 Project.toKabobCase = function(string) {
   return string.toLowerCase().replace(/ /g, '-');
-}
+};
 
 // adds a helper block to Handlebars that converts a date into the number of days ago
 Handlebars.registerHelper('toDaysAgo', function(date) {
@@ -62,7 +62,7 @@ Project.loadAll = function(rawData) {
   rawData.forEach(function(projectDataObj) {
     Project.all.push(new Project(projectDataObj));
   });
-}
+};
 
 // gets the raw data for the projects. if the data is stored in the localStorage, will retrieve it from there, else will get the data from the JSON file. after the data has been acquired, initializes the projects part of the page.
 Project.fetchAll = function() {
@@ -91,4 +91,4 @@ Project.fetchAll = function() {
     },
     error: function(err) { console.error(err); },
   })
-}
+};
