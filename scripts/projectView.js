@@ -13,7 +13,6 @@ projectView.handleViewDesciptionClick = function() {
 
 projectView.handleWindowResize = function() {
   $(window).on('resize', function() {
-    console.log($(this).width());
     projects.forEach(function(project) {
       project.renderPixelImage();
     });
