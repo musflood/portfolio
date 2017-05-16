@@ -1,7 +1,7 @@
 'use strict';
 
 // create a library for funcitons on the main view
-var mainView = {};
+const mainView = {};
 
 // event handler for clicking on the menu arrow button to show and hide the nav menu
 mainView.handleMenuArrowClick = function() {
@@ -39,11 +39,11 @@ mainView.handleMenuTabClick = function() {
 
 // given a text element that is siblings with an element with the class of 'cursor', prints each letter to the DOM one at a time at a given speed after a given delay, both in milliseconds
 mainView.typeOutWords = function($element, delay, speed) {
-  var allText = $element.html();
-  var letters = [];
-  var foundTag = 0;
-  var letterWithBreak = '';
-  for (var i = 0; i < allText.length; i++) {
+  let allText = $element.html();
+  let letters = [];
+  let foundTag = 0;
+  let letterWithBreak = '';
+  for (let i = 0; i < allText.length; i++) {
     foundTag += allText[i+1] === '<' ? 1 : 0;
     if(!foundTag) {
       letters.push(allText[i]);
@@ -59,8 +59,8 @@ mainView.typeOutWords = function($element, delay, speed) {
   $element.html('');
   setTimeout(function() {
     $element.siblings('.cursor').css('animation', 'none');
-    i = 0;
-    var interval = setInterval(function() {
+    let i = 0;
+    let interval = setInterval(function() {
       $element.html(letters.slice(0, i).join(''));
       if (i === letters.length) {
         clearInterval(interval);

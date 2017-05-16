@@ -35,9 +35,9 @@ Handlebars.registerHelper('toKabobCase', function(string) {
 
 // finds the canvas corresponding to the Project and pixelizes the image for the project and renders it to the canvas
 Project.prototype.renderPixelImage = function() {
-  var $canvas = $(`#img-${Project.toKabobCase(this.title)}`);
-  var ctx = $canvas[0].getContext('2d');
-  var $img = $canvas.siblings('img');
+  let $canvas = $(`#img-${Project.toKabobCase(this.title)}`);
+  let ctx = $canvas[0].getContext('2d');
+  let $img = $canvas.siblings('img');
 
   $canvas[0].height = $img.height();
   $canvas[0].width = $img.width();
@@ -46,15 +46,15 @@ Project.prototype.renderPixelImage = function() {
   ctx.webkitImageSmoothingEnabled = false;
   ctx.imageSmoothingEnabled = false;
 
-  var scalar = 40 / 100; // set the pixelization factor
+  let scalar = 40 / 100; // set the pixelization factor
 
-  var shrunkWidth = scalar * $canvas.width();
-  var shrunkHeight = scalar * $canvas.height();
+  let shrunkWidth = scalar * $canvas.width();
+  let shrunkHeight = scalar * $canvas.height();
   ctx.drawImage($img[0], 0, 0, shrunkWidth, shrunkHeight);
   ctx.drawImage($canvas[0], 0, 0, shrunkWidth, shrunkHeight, 0, 0, $canvas.width(), $canvas.height());
 };
 
-// sorts the given array of raw project data and then instantiates the Projects and add them to the array of projects.
+// sorts the given array of raw project data and then instantiates the Projects and adds them to the array of projects.
 Project.loadAll = function(rawData) {
   rawData.sort(function(a,b) {
     return (new Date(b.dateUpdated)) - (new Date(a.dateUpdated));
@@ -85,10 +85,10 @@ Project.fetchAll = function() {
             Project.loadAll(data);
             projectView.initProjects();
           },
-          function(err) {console.error(err);}
+          function(err) { console.error(err); }
         );
       }
     },
-    error: function(err) {console.error(err);},
+    error: function(err) { console.error(err); },
   })
 }

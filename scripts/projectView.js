@@ -1,7 +1,7 @@
 'use strict';
 
 // create a library for funcitons on the project view
-var projectView = {};
+const projectView = {};
 
 // toggles the description of a project when the 'read description' link is clicked
 projectView.handleViewDesciptionClick = function() {
