@@ -152,7 +152,7 @@ nav a:focus, #social a:focus {
   transition: 1000ms;
 }
 
-.project-image canvas:hover {
+.project:hover canvas {
   opacity: 0;
 }
 
