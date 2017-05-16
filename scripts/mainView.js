@@ -71,9 +71,10 @@ mainView.typeOutWords = function($element, delay, speed) {
   }, delay)
 }
 
-// add listeners and print the home page on page ready.
-$(document).ready(function() {
+// initializes the entire main page (index.html). adds listeners to the menus and types out the name at the top of the page. also fetches the data for the projects and prints them.
+mainView.initMainPage = function() {
   mainView.handleMenuArrowClick();
   mainView.handleMenuTabClick();
   mainView.typeOutWords($('#name-card .text-to-write'), 1000, 300);
-});
+  Project.fetchAll();
+}
