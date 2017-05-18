@@ -1,0 +1,26 @@
+{
+  "name": "megan-portfolio",
+  "version": "1.0.0",
+  "description": "Programming portfolio of the work of Megan Flood.",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/musflood/portfolio.git"
+  },
+  "keywords": [
+    "portfolio"
+  ],
+  "author": "Megan Flood",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/musflood/portfolio/issues"
+  },
+  "homepage": "https://github.com/musflood/portfolio#readme",
+  "dependencies": {
+    "express": "^4.15.3"
+  }
+}
