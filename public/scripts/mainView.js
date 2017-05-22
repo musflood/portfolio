@@ -43,6 +43,9 @@ mainView.typeOutWords = function($element, delay, speed) {
   let letters = [];
   let foundTag = 0;
   let letterWithBreak = '';
+
+  // TODO: KILL THE FOR LOOP!!!!!!!
+
   for (let i = 0; i < allText.length; i++) {
     foundTag += allText[i+1] === '<' ? 1 : 0;
     if(!foundTag) {
