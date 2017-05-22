@@ -1,3 +1,4 @@
+'use strict';
 // REQUIRES
 const express = require('express');
 // INSTANTIATION
