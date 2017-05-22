@@ -40,25 +40,25 @@ mainView.handleMenuTabClick = function() {
 // given a text element that is siblings with an element with the class of 'cursor', prints each letter to the DOM one at a time at a given speed after a given delay, both in milliseconds
 mainView.typeOutWords = function($element, delay, speed) {
   let allText = $element.html();
-  let letters = [];
+
   let foundTag = 0;
   let letterWithBreak = '';
 
-  // TODO: KILL THE FOR LOOP!!!!!!!
-
-  for (let i = 0; i < allText.length; i++) {
+  let letters = allText.split('').reduce(function(letters, letter, i) {
     foundTag += allText[i+1] === '<' ? 1 : 0;
     if(!foundTag) {
-      letters.push(allText[i]);
+      letters.push(letter);
     } else {
-      letterWithBreak += allText[i];
-      if (foundTag === 2 && allText[i] === '>') {
+      letterWithBreak += letter;
+      if (foundTag === 2 && letter === '>') {
         letters.push(letterWithBreak);
         letterWithBreak = '';
         foundTag = 0;
       }
     }
-  }
+    return letters;
+  }, []);
+
   $element.html('');
   setTimeout(function() {
     $element.siblings('.cursor').css('animation', 'none');

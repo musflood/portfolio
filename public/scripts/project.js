@@ -59,9 +59,7 @@ Project.loadAll = function(rawData) {
   rawData.sort(function(a,b) {
     return (new Date(b.dateUpdated)) - (new Date(a.dateUpdated));
   });
-  rawData.forEach(function(projectDataObj) {
-    Project.all.push(new Project(projectDataObj));
-  });
+  Project.all = rawData.map(project => new Project(project));
 };
 
 // gets the raw data for the projects. if the data is stored in the localStorage, will retrieve it from there, else will get the data from the JSON file. after the data has been acquired, initializes the projects part of the page.
