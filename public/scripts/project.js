@@ -43,7 +43,7 @@ var app = app || {};
     let ctx = $canvas[0].getContext('2d');
     let $img = $canvas.siblings('img');
 
-    $canvas[0].height = $img.height();
+    $canvas[0].height = $img.height() + 2; // add slight buffer to make sure image is covered
     $canvas[0].width = $img.width();
 
     ctx.mozImageSmoothingEnabled = false;
