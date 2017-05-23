@@ -99,8 +99,10 @@ nav a:focus, #social a:focus {
 }
 
 @media screen and (min-width: 640px) {
+  #info-card h1:first-child {
+    margin-bottom: 5%;
+  }
   #info-card div {
-    margin: 5% 0;
     text-align: center;
   }
 
@@ -182,8 +184,11 @@ nav a:focus, #social a:focus {
     height: auto;
   }
 
+  #projects-card h1:first-child {
+    margin-bottom: 1em;
+  }
+
   #project-list {
-    margin-top: 1em;
     text-align: center;
   }
 
@@ -194,6 +199,12 @@ nav a:focus, #social a:focus {
     vertical-align: top;
     margin: 1em;
   }
+}
+
+.bottom {
+  position: absolute;
+  bottom: 0;
+  margin-bottom: .25em;
 }
 
 footer {

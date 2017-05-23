@@ -20,6 +20,7 @@ body {
 section {
   min-height: 100%;
   padding: 1em;
+  position: relative;
 }
 
 @media screen and (min-width: 640px) {
