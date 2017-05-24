@@ -36,17 +36,6 @@ var app = app || {};
     });
   };
 
-  // event handler for clicking on the nav to scroll to the section clicked
-  mainView.handleMenuTabClick = function() {
-    $('nav').on('click', '.tab', function(e) {
-      e.preventDefault();
-      $('html, body').animate({
-        scrollTop: ($(`#${$(this).data('locate')}`).offset().top),
-      }, 250);
-    });
-    $('.tab[data-locate="name-card"]').focus();
-  };
-
   // event handler that checks where on the page the scroll is
   mainView.handlePageScroll = function() {
     $(window).on('scroll', function() {
@@ -143,13 +132,14 @@ var app = app || {};
   mainView.initMainPage = function() {
     mainView.handleSocialClick();
     mainView.handleMenuArrowClick();
-    mainView.handleMenuTabClick();
     mainView.handlePageScroll();
     mainView.typeOutWords($('#name-card .text-to-write'), TYPING_PAUSE, TYPING_SPEED);
     app.Project.fetchAll(app.projectView.initProjects);
     $('#info-card h1, #info-card div').hide();
     $('#projects-card h1, #project-list').hide();
   };
+
+  mainView.initMainPage();
 
   module.mainView = mainView;
 })(app);
