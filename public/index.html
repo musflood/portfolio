@@ -101,7 +101,9 @@
           <h2>{{title}}</h2>
           <p class='details'>
           {{#if language}}
-            {{language}},
+            {{language}}
+          {{else}}
+            &nbsp;
           {{/if}}
           </p>
           <time datetime={{dateUpdated}}>updated {{toDaysAgo dateUpdated}} days ago</time>

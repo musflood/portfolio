@@ -12,6 +12,7 @@ var app = app || {};
     this.dateUpdated = rawProjectObj.pushed_at;
     this.description = rawProjectObj.description;
     this.language = rawProjectObj.language;
+    this.isOwner = rawProjectObj.permissions.admin;
   }
 
   // list of all projects from raw data
@@ -71,8 +72,18 @@ var app = app || {};
   };
 
   // filters out the projects that are just lab assignments from the list of all projects
-  Project.removeLabs = function() {
-    return app.Project.all.filter(function(project) { return !/\d\d\s/.test(project.title); })
+  Project.removeLabs = function(projects) {
+    return projects.filter(function(project) { return !/\d\d\s/.test(project.title); })
+  }
+
+  // filters out projects that were not created by me
+  Project.removeOthersProjects = function(projects) {
+    return projects.filter(function(project) { return project.isOwner });
+  }
+
+  // gets rid of the learning journal
+  Project.removeJournal = function(projects) {
+    return projects.filter(function(project) { return project.title !== 'Learning Journal'; });
   }
 
   // sorts the given array of raw project data and then instantiates the Projects and adds them to the array of projects.
@@ -81,7 +92,7 @@ var app = app || {};
       return (new Date(b.pushed_at)) - (new Date(a.pushed_at));
     });
     Project.all = rawData.map(project => new Project(project));
-    Project.visible = Project.removeLabs();
+    Project.visible = Project.removeJournal(Project.removeLabs(Project.removeOthersProjects(Project.all)));
   };
 
   // gets the raw data for the projects. if the data is stored in the localStorage, will retrieve it from there, else will get the data from the GitHub API. after the data has been acquired, initializes the projects part of the page.
