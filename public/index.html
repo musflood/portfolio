@@ -10,6 +10,7 @@
     <!-- libraries -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.8/handlebars.js"></script>
+    <script src="https://cdn.rawgit.com/visionmedia/page.js/master/page.js"></script>
     <!-- styling -->
     <link rel="stylesheet" type="text/css" href="styles/base.css">
     <link rel="stylesheet" type="text/css" href="styles/layout.css">
@@ -20,9 +21,9 @@
 
     <nav class="hide">
       <ul>
-        <li><a href="#name-card" class="tab" data-locate="name-card">Home</a></li>
-        <li><a href="#info-card" class="tab" data-locate="info-card">Info</a></li>
-        <li><a href="#projects-card" class="tab" data-locate="projects-card">Projects</a></li>
+        <li><a href="/" class="tab" data-locate="name-card">Home</a></li>
+        <li><a href="/info" class="tab" data-locate="info-card">Info</a></li>
+        <li><a href="/projects" class="tab" data-locate="projects-card">Projects</a></li>
       </ul>
     </nav>
 
@@ -105,9 +106,16 @@
         </div>
       </a>
     </script>
-    <script src="scripts/project.js"></script>
-    <script src="scripts/mainView.js"></script>
-    <script src="scripts/projectView.js"></script>
-    <script> app.mainView.initMainPage() </script>
+    <!-- models -->
+    <script src="scripts/models/project.js"></script>
+    <!-- views -->
+    <script src="scripts/views/projectView.js"></script>
+    <script src="scripts/views/mainView.js"></script>
+    <!-- controllers -->
+    <script src="scripts/controllers/nameController.js"></script>
+    <script src="scripts/controllers/infoController.js"></script>
+    <script src="scripts/controllers/projectsController.js"></script>
+    <script src="scripts/controllers/routes.js"></script>
+    <!-- <script> app.mainView.initMainPage() </script> -->
   </body>
 </html>
