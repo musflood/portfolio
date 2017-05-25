@@ -19,7 +19,7 @@ var app = app || {};
   // when the browser window is resized, also resizes the canvas elements with the filters applied.
   projectView.handleWindowResize = function() {
     $(window).on('resize', function() {
-      app.Project.all.forEach(function(project) {
+      app.Project.visible.forEach(function(project) {
         project.renderPixelImage();
       });
     });
@@ -28,7 +28,7 @@ var app = app || {};
   // initializes the projects portion of the page. adds each project to the DOM and adds the filters. also adds listeners to each project for the desciptions and for window resize.
   projectView.initProjects = function() {
     // add each of the projects to the DOM
-    app.Project.all.forEach(function(project) {
+    app.Project.visible.forEach(function(project) {
       $('#project-list').append(project.toHtml());
       if (project.img === 'imgs/mouse.png') {
         $(`#img-${app.Project.toKabobCase(project.title)}`).hide();
