@@ -99,11 +99,8 @@ var app = app || {};
   Project.fetchAll = function(callback) {
     // quick check to see if the data in localStorage is up to date
     $.ajax({
-      url: 'https://api.github.com/user/repos',
+      url: '/github/user/repos',
       method: 'HEAD',
-      headers: {
-        Authorization: `token ${githubToken}`
-      },
       success: function(data, message, xhr) {
         let eTag = xhr.getResponseHeader('ETag');
         if (eTag === localStorage.eTag) {
@@ -114,13 +111,7 @@ var app = app || {};
           });
         } else {
           // localStorage is not up to date, get new data
-          $.ajax({
-            url: 'https://api.github.com/user/repos',
-            method: 'GET',
-            headers: {
-              Authorization: `token ${githubToken}`
-            }
-          })
+          $.get('/github/user/repos')
           .then(
             function(data) {
               localStorage.eTag = eTag;

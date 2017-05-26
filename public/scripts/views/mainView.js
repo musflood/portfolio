@@ -23,6 +23,9 @@ var app = app || {};
     $('.fa-chevron-circle-up').on('click', function(e) {
       e.preventDefault();
       $('nav').toggleClass('hide');
+      if ($(window).scrollTop() > ($('#name-card h1').height() / 2)) {
+        $('#social li:not(:last-child)').toggleClass('hide');
+      }
       $(this).toggleClass('down');
       if ($(this).hasClass('down')) {
         $('#social').animate({
@@ -42,10 +45,14 @@ var app = app || {};
       let triggerHeight = $('#name-card h1').height() / 2;
       if ($(window).scrollTop() < triggerHeight) {
         $('.tab[data-locate="name-card"]').focus();
+        $('#social li:not(:last-child)').removeClass('hide');
       }
       if ($(window).scrollTop() >= triggerHeight) {
         mainView.displayInfoCard();
         $('.tab[data-locate="info-card"]').focus();
+        if (!$('.fa-chevron-circle-up').hasClass('down')) {
+          $('#social li:not(:last-child)').addClass('hide');
+        }
       }
       if ($(window).scrollTop() >= (triggerHeight + $('#name-card').height())) {
         mainView.displayProjectCard();
