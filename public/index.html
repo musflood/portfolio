@@ -31,7 +31,7 @@
       <ul>
         <li><a href="https://github.com/musflood" target="_blank"><i class="fa fa-github-alt"></i></a></li>
         <li><a href="https://medium.com/@mflood" target="_blank"><i class="fa fa-medium"></i></a></li>
-        <li><a href=""><i class="fa fa-envelope"></i></a></li>
+        <li><a href="mailto:mflood@alumni.reed.edu"><i class="fa fa-envelope"></i></a></li>
         <li><a href="#" id="nav-arrow"><i class="fa fa-chevron-circle-up"></i></a></li>
       </ul>
     </div>
@@ -99,14 +99,22 @@
             </div>
           </div>
           <h2>{{title}}</h2>
+          <p class='details'>
+          {{#if language}}
+            {{language}}
+          {{else}}
+            &nbsp;
+          {{/if}}
+          </p>
           <time datetime={{dateUpdated}}>updated {{toDaysAgo dateUpdated}} days ago</time>
           <a href="#" class="more">Read description ></a>
           <div class="clear-fix"></div>
-          <div class="desciption hide">{{{description}}}</div>
+          <div class="desciption hide"><p>{{description}}</p></div>
         </div>
       </a>
     </script>
     <!-- models -->
+    <script src="scripts/models/githubToken.js"></script>
     <script src="scripts/models/project.js"></script>
     <!-- views -->
     <script src="scripts/views/projectView.js"></script>

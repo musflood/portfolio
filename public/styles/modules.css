@@ -175,7 +175,7 @@ nav a:focus, #social a:focus {
   margin-bottom: 1em;
 }
 
-.project p:last-child {
+.project p:last-child, .project .details {
   margin-bottom: 0;
 }
 
@@ -190,6 +190,7 @@ nav a:focus, #social a:focus {
 
   #project-list {
     text-align: center;
+    margin-bottom: 3.998em;
   }
 
   .project {

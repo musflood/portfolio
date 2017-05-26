@@ -81,7 +81,7 @@ var app = app || {};
       setTimeout(function() {
         $('#projects-card h1:first-child .cursor').css('animation', 'none').css('opacity', '0');
         $('#project-list').slideDown(BOX_RENDER_SPEED,'linear');
-        app.Project.all.forEach(function(project) {
+        app.Project.visible.forEach(function(project) {
           project.renderPixelImage();
         })
         setTimeout(function() {
