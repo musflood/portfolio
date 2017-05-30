@@ -24,7 +24,7 @@ var app = app || {};
   Project.all = [];
 
   // list of projects to display in projects section
-  Project.visible = [];
+  Project.viewable = [];
 
   // dictionary of the available images
   Project.imgDictionary = {};
@@ -50,7 +50,7 @@ var app = app || {};
       return (new Date(b.pushed_at)) - (new Date(a.pushed_at));
     });
     Project.all = rawData.map(project => new Project(project));
-    Project.visible = removeJournal(removeLabs(removeOthersProjects(Project.all)));
+    Project.viewable = removeJournal(removeLabs(removeOthersProjects(Project.all)));
   };
 
   // gets the raw data for the projects. if the data is stored in the localStorage, will retrieve it from there, else will get the data from the GitHub API. after the data has been acquired, initializes the projects part of the page.
@@ -119,14 +119,14 @@ var app = app || {};
 
   // returns a list of Projects that have the given value for the given property
   Project.with = function(prop, val) {
-    return Project.visible.filter(function(project) {
+    return Project.viewable.filter(function(project) {
       return project[prop] === val;
     })
   }
 
   // returns a list of all the languages the Projects have been written in
   Project.allLangs = function() {
-    return Project.visible.reduce(function(uniqueLangs, project) {
+    return Project.viewable.reduce(function(uniqueLangs, project) {
       if (!uniqueLangs.includes(project.language)) uniqueLangs.push(project.language);
       return uniqueLangs;
     }, []).sort();

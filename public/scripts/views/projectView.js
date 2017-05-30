@@ -40,7 +40,7 @@ var app = app || {};
   // when the browser window is resized, also resizes the canvas elements with the filters applied.
   projectView.handleWindowResize = function() {
     $(window).on('resize', function() {
-      app.Project.visible.forEach(function(project) {
+      app.Project.viewable.forEach(function(project) {
         projectView.renderPixelImage(project);
       });
     });

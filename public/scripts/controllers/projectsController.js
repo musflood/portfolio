@@ -15,14 +15,14 @@ var app = app || {};
     next();
   }
 
-  // loads all the projects that are supposed to be visible
+  // loads all the projects that are viewable
   projectsController.loadAll = function(ctx, next) {
-    if (app.Project.visible.length) {
-      ctx.projects = app.Project.visible;
+    if (app.Project.viewable.length) {
+      ctx.projects = app.Project.viewable;
       next();
     } else {
       app.Project.fetchAll(function() {
-        ctx.projects = app.Project.visible;
+        ctx.projects = app.Project.viewable;
         next();
       })
     }
@@ -30,7 +30,7 @@ var app = app || {};
 
   //loads all the projects of a given language
   projectsController.loadLang = function(ctx, next) {
-    if (app.Project.visible.length) {
+    if (app.Project.viewable.length) {
       ctx.projects = app.Project.with('language', ctx.params.language !== 'none' ? ctx.params.language : null);
       next();
     } else {

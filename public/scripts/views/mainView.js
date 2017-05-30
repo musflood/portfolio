@@ -116,7 +116,7 @@ var app = app || {};
       setTimeout(function() {
         $('#projects-card h1:first-child .cursor').css('animation', 'none').css('opacity', '0');
         $('#projects-card main').slideDown(BOX_RENDER_SPEED,'linear');
-        app.Project.visible.forEach(function(project) {
+        app.Project.viewable.forEach(function(project) {
           app.projectView.renderPixelImage(project);
         })
         setTimeout(function() {
@@ -133,7 +133,7 @@ var app = app || {};
     app.projectView.initProjects(projects);
     setTimeout(function() {
       $('#project-list').slideDown(BOX_RENDER_SPEED);
-      app.Project.visible.forEach(function(project) {
+      app.Project.viewable.forEach(function(project) {
         app.projectView.renderPixelImage(project);
       })
       setTimeout(function() {
@@ -186,7 +186,7 @@ var app = app || {};
     mainView.handleSelectClick();
     mainView.handlePageScroll();
     mainView.typeOutWords($('#name-card .text-to-write'), TYPING_PAUSE, TYPING_SPEED);
-    app.Project.fetchAll(function() {app.projectView.initProjects(app.Project.visible)});
+    app.Project.fetchAll(function() {app.projectView.initProjects(app.Project.viewable)});
     $('#info-card h1, #info-card div').hide();
     $('#projects-card h1, #projects-card main').hide();
   };
