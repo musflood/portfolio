@@ -1,5 +1,5 @@
 {
-  "banana-beat": "imgs/banana-beat.png",
-  "bus-mall": "imgs/bus-mall.png",
-  "portfolio": "imgs/portfolio-screenshot.png"
+  "banana-beat": "/imgs/banana-beat.png",
+  "bus-mall": "/imgs/bus-mall.png",
+  "portfolio": "/imgs/portfolio-screenshot.png"
 }

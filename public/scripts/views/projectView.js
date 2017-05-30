@@ -46,42 +46,54 @@ var app = app || {};
     });
   };
 
+  // populates the project filter with the languages the projects were written in
   projectView.populateFilter = function() {
     let template = Handlebars.compile($('#option-template').html());
     let options = app.Project.allLangs().map(function(lang) {
-      return template({ val: lang ? lang.toUpperCase() : 'NONE' });
+      return template({ val: lang ? lang : 'none', textVal: lang ? lang.toUpperCase() : 'NONE' });
     });
     $('#projects-card .select-options').append(options);
+  };
+
+  // handles a change in the selected filter option
+  projectView.handleFilterClick = function() {
+    $('#projects-card .select-options').on('click', 'a', function() {
+      page(`/projects/${$(this).data('val')}`);
+    });
   }
 
   // finds the canvas corresponding to the Project and pixelizes the image for the project and renders it to the canvas
   projectView.renderPixelImage = function(project) {
-    let $canvas = $(`#img-${toKabobCase(project.title)}`);
-    let ctx = $canvas[0].getContext('2d');
-    let $img = $canvas.siblings('img');
+    if ($(`#img-${toKabobCase(project.title)}`).length) {
+      let $canvas = $(`#img-${toKabobCase(project.title)}`);
+      let ctx = $canvas[0].getContext('2d');
+      let $img = $canvas.siblings('img');
 
-    $canvas[0].height = $img.height() + 2; // add slight buffer to make sure image is covered
-    $canvas[0].width = $img.width();
+      $canvas[0].height = $img.height() + 2; // add slight buffer to make sure image is covered
+      $canvas[0].width = $img.width();
 
-    ctx.mozImageSmoothingEnabled = false;
-    ctx.webkitImageSmoothingEnabled = false;
-    ctx.imageSmoothingEnabled = false;
+      ctx.mozImageSmoothingEnabled = false;
+      ctx.webkitImageSmoothingEnabled = false;
+      ctx.imageSmoothingEnabled = false;
 
-    let scalar = 40 / 100; // set the pixelization factor
+      let scalar = 40 / 100; // set the pixelization factor
 
-    let shrunkWidth = scalar * $canvas.width();
-    let shrunkHeight = scalar * $canvas.height();
-    ctx.drawImage($img[0], 0, 0, shrunkWidth, shrunkHeight);
-    ctx.drawImage($canvas[0], 0, 0, shrunkWidth, shrunkHeight, 0, 0, $canvas.width(), $canvas.height());
+      let shrunkWidth = scalar * $canvas.width();
+      let shrunkHeight = scalar * $canvas.height();
+      ctx.drawImage($img[0], 0, 0, shrunkWidth, shrunkHeight);
+      ctx.drawImage($canvas[0], 0, 0, shrunkWidth, shrunkHeight, 0, 0, $canvas.width(), $canvas.height());
+    }
   };
 
   // initializes the projects portion of the page. adds each project to the DOM and adds the filters. also adds listeners to each project for the desciptions and for window resize.
-  projectView.initProjects = function() {
+  projectView.initProjects = function(projects) {
+    $('#projects-card .select-options a[data-val=""]').siblings().remove();
     projectView.populateFilter();
     // add each of the projects to the DOM
-    app.Project.visible.forEach(function(project) {
+    $('#project-list').empty();
+    projects.forEach(function(project) {
       $('#project-list').append(render(project));
-      if (project.img === 'imgs/mouse.png') {
+      if (project.img === '/imgs/mouse.png') {
         $(`#img-${toKabobCase(project.title)}`).hide();
       } else {
         $(`#img-${toKabobCase(project.title)}`).siblings('img').on('load', function() {
@@ -90,6 +102,7 @@ var app = app || {};
       }
     });
     // apply event listeners
+    projectView.handleFilterClick();
     projectView.handleViewDesciptionClick();
     projectView.handleWindowResize();
   };

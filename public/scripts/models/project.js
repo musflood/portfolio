@@ -11,7 +11,7 @@ var app = app || {};
 
   // constructs a new Project object from the raw data of a Project object
   function Project(rawProjectObj) {
-    this.img = Project.imgDictionary[rawProjectObj.name] || 'imgs/mouse.png';
+    this.img = Project.imgDictionary[rawProjectObj.name] || '/imgs/mouse.png';
     this.title = fromKabobCase(rawProjectObj.name);
     this.url = rawProjectObj.homepage || rawProjectObj.html_url;
     this.dateUpdated = rawProjectObj.pushed_at;
@@ -92,7 +92,7 @@ var app = app || {};
   Project.fetchImages = function(callback) {
     // quick check to see if the data in localStorage is up to date
     $.ajax({
-      url: 'data/imgDict.json',
+      url: '/data/imgDict.json',
       method: 'HEAD',
       success: function(data, message, xhr) {
         let imgETag = xhr.getResponseHeader('ETag');
@@ -102,7 +102,7 @@ var app = app || {};
           callback();
         } else {
           // localStorage is not up to date, get new data
-          $.getJSON('data/imgDict.json')
+          $.getJSON('/data/imgDict.json')
           .then(
             function(data) {
               localStorage.imgETag = imgETag;

@@ -44,20 +44,25 @@ var app = app || {};
     // open/close menu
     $('.select').on('click', function(e) {
       e.preventDefault();
-      $(this).find('.select-options').slideToggle(BOX_RENDER_SPEED/5);
+      $(this).find('.select-options').slideToggle(TYPING_SPEED);
     });
     // close on click off
     $(document).on('click', function(e) {
       if (!$(e.target).closest('.select').length) {
-        $('.select-options:visible').slideToggle(BOX_RENDER_SPEED/5);
+        $('.select-options:visible').slideUp(TYPING_SPEED);
       }
     });
     // change selected option
     $('.select-options').on('click', 'a', function() {
-      $(this).parents('.select').find('.select-btn-text').text($(this).text());
-      $(this).siblings().attr('data-selected', false);
-      $(this).attr('data-selected', true);
+      mainView.setSelectOption($(this));
     })
+  }
+
+  // changes a select menu so that the chosen option is on the button and hidden from the menu
+  mainView.setSelectOption = function(option) {
+    option.parents('.select').find('.select-btn-text').text(option.text());
+    option.siblings().attr('data-selected', false);
+    option.attr('data-selected', true);
   }
 
   // event handler that checks where on the page the scroll is
@@ -119,6 +124,21 @@ var app = app || {};
     }
   }
 
+  mainView.renderProjectList = function(projects) {
+    $('#project-list').hide();
+    $('#projects-card h1.bottom').hide();
+    app.projectView.initProjects(projects);
+    setTimeout(function() {
+      $('#project-list').slideDown(BOX_RENDER_SPEED);
+      app.Project.visible.forEach(function(project) {
+        app.projectView.renderPixelImage(project);
+      })
+      setTimeout(function() {
+        if ($('#project-list:visible').length) { $('#projects-card h1.bottom').show(); }
+      }, BOX_RENDER_SPEED);
+    }, TYPING_SPEED)
+  }
+
   // given a text element that is siblings with an element with the class of 'cursor', prints each letter to the DOM one at a time at a given speed after a given delay, both in milliseconds
   mainView.typeOutWords = function($element, delay, speed) {
     let allText = $element.html();
@@ -163,7 +183,7 @@ var app = app || {};
     mainView.handleSelectClick();
     mainView.handlePageScroll();
     mainView.typeOutWords($('#name-card .text-to-write'), TYPING_PAUSE, TYPING_SPEED);
-    app.Project.fetchAll(app.projectView.initProjects);
+    app.Project.fetchAll(function() {app.projectView.initProjects(app.Project.visible)});
     $('#info-card h1, #info-card div').hide();
     $('#projects-card h1, #projects-card main').hide();
   };

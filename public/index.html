@@ -12,10 +12,10 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.8/handlebars.js"></script>
     <script src="https://cdn.rawgit.com/visionmedia/page.js/master/page.js"></script>
     <!-- styling -->
-    <link rel="stylesheet" type="text/css" href="styles/base.css">
-    <link rel="stylesheet" type="text/css" href="styles/layout.css">
-    <link rel="stylesheet" type="text/css" href="styles/modules.css">
-    <link rel="icon" type="image/x-icon" href="imgs/mouseicon.png">
+    <link rel="stylesheet" type="text/css" href="/styles/base.css">
+    <link rel="stylesheet" type="text/css" href="/styles/layout.css">
+    <link rel="stylesheet" type="text/css" href="/styles/modules.css">
+    <link rel="icon" type="image/x-icon" href="/imgs/mouseicon.png">
   </head>
   <body>
 
@@ -73,7 +73,7 @@
           <div class="select">
             <a href='#' class="select-btn"><span class="select-btn-text">ALL</span> <i class="fa fa-caret-down"></i></a>
             <div class="select-options">
-              <a href="#" data-selected=true>ALL</a>
+              <a href="#" data-val="" data-selected=true>ALL</a>
             </div>
           </div>
         </h2>
@@ -127,17 +127,17 @@
       </a>
     </script>
     <script id="option-template" type="text/x-handlebars-templage">
-      <a href="#" data-selected=false>{{val}}</a>
+      <a href="#" data-val={{val}} data-selected=false>{{textVal}}</a>
     </script>
     <!-- models -->
-    <script src="scripts/models/project.js"></script>
+    <script src="/scripts/models/project.js"></script>
     <!-- views -->
-    <script src="scripts/views/projectView.js"></script>
-    <script src="scripts/views/mainView.js"></script>
+    <script src="/scripts/views/projectView.js"></script>
+    <script src="/scripts/views/mainView.js"></script>
     <!-- controllers -->
-    <script src="scripts/controllers/nameController.js"></script>
-    <script src="scripts/controllers/infoController.js"></script>
-    <script src="scripts/controllers/projectsController.js"></script>
-    <script src="scripts/controllers/routes.js"></script>
+    <script src="/scripts/controllers/nameController.js"></script>
+    <script src="/scripts/controllers/infoController.js"></script>
+    <script src="/scripts/controllers/projectsController.js"></script>
+    <script src="/scripts/controllers/routes.js"></script>
   </body>
 </html>

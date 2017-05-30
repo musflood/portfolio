@@ -6,7 +6,8 @@ var app = app || {};
 
   const nameController = {};
 
-  nameController.init = function() {
+  // opens the name tab by scrolling to it and highlighting the projects nav item
+  nameController.open = function() {
     $('html, body').animate({
       scrollTop: ($('#name-card').offset().top),
     }, 250);
