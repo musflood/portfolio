@@ -74,10 +74,6 @@
             <a href='#' class="select-btn"><span class="select-btn-text">ALL</span> <i class="fa fa-caret-down"></i></a>
             <div class="select-options">
               <a href="#" data-selected=true>ALL</a>
-              <a href="#" data-selected=false>JAVASCRIPT</a>
-              <a href="#" data-selected=false>HTML</a>
-              <a href="#" data-selected=false>CSS</a>
-              <a href="#" data-selected=false>PYTHON</a>
             </div>
           </div>
         </h2>
@@ -95,6 +91,7 @@
       </ul>
     </footer>
 
+    <!-- filters -->
     <svg id="project-img-filter" class="hide" color-interpolation-filters="sRGB">
       <filter id="monochrome-green">
         <feColorMatrix type="matrix"
@@ -104,6 +101,7 @@
                         0  0 0 1  0" />
       </filter>
     </svg>
+    <!-- templates -->
     <script id="project-template" type="text/x-handlebars-template">
       <a href={{url}} target="_blank">
         <div class="project">
@@ -127,6 +125,9 @@
           <div class="desciption hide"><p>{{description}}</p></div>
         </div>
       </a>
+    </script>
+    <script id="option-template" type="text/x-handlebars-templage">
+      <a href="#" data-selected=false>{{val}}</a>
     </script>
     <!-- models -->
     <script src="scripts/models/project.js"></script>

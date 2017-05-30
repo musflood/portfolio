@@ -110,7 +110,7 @@ var app = app || {};
         $('#projects-card h1:first-child .cursor').css('animation', 'none').css('opacity', '0');
         $('#projects-card main').slideDown(BOX_RENDER_SPEED,'linear');
         app.Project.visible.forEach(function(project) {
-          project.renderPixelImage();
+          app.projectView.renderPixelImage(project);
         })
         setTimeout(function() {
           $('#projects-card h1.bottom').show();

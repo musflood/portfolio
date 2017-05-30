@@ -4,10 +4,15 @@ var app = app || {};
 
 (function(module) {
 
+  // takes a string and retuns the same string as kabob case (lower case and with '-' instead of spaces)
+  const fromKabobCase = function(string) {
+    return string.replace(/-/g, ' ').replace(/\b\S/g, function(ch) {return ch.toUpperCase();});
+  };
+
   // constructs a new Project object from the raw data of a Project object
   function Project(rawProjectObj) {
     this.img = Project.imgDictionary[rawProjectObj.name] || 'imgs/mouse.png';
-    this.title = Project.fromKabobCase(rawProjectObj.name);
+    this.title = fromKabobCase(rawProjectObj.name);
     this.url = rawProjectObj.homepage || rawProjectObj.html_url;
     this.dateUpdated = rawProjectObj.pushed_at;
     this.description = rawProjectObj.description;
@@ -24,65 +29,18 @@ var app = app || {};
   // dictionary of the available images
   Project.imgDictionary = {};
 
-  // fills the html project template with the information from the Project object and returns a new DOM element
-  Project.prototype.toHtml = function() {
-    let templateRender = Handlebars.compile($('#project-template').html());
-    return templateRender(this);
-  };
-
-  // takes a string and retuns the same string as kabob case (lower case and with '-' instead of spaces)
-  Project.toKabobCase = function(string) {
-    return string.toLowerCase().replace(/ /g, '-');
-  };
-
-  // takes a string and retuns the same string as kabob case (lower case and with '-' instead of spaces)
-  Project.fromKabobCase = function(string) {
-    return string.replace(/-/g, ' ').replace(/\b\S/g, function(ch) {return ch.toUpperCase();});
-  };
-
-  // adds a helper block to Handlebars that converts a date into the number of days ago
-  Handlebars.registerHelper('toDaysAgo', function(date) {
-    return parseInt((new Date() - new Date(date))/1000/60/60/24);
-  });
-
-  // adds a helper block to Handlebars that converts a string to kabob case
-  Handlebars.registerHelper('toKabobCase', function(string) {
-    return Project.toKabobCase(string);
-  });
-
-  // finds the canvas corresponding to the Project and pixelizes the image for the project and renders it to the canvas
-  Project.prototype.renderPixelImage = function() {
-    let $canvas = $(`#img-${Project.toKabobCase(this.title)}`);
-    let ctx = $canvas[0].getContext('2d');
-    let $img = $canvas.siblings('img');
-
-    $canvas[0].height = $img.height() + 2; // add slight buffer to make sure image is covered
-    $canvas[0].width = $img.width();
-
-    ctx.mozImageSmoothingEnabled = false;
-    ctx.webkitImageSmoothingEnabled = false;
-    ctx.imageSmoothingEnabled = false;
-
-    let scalar = 40 / 100; // set the pixelization factor
-
-    let shrunkWidth = scalar * $canvas.width();
-    let shrunkHeight = scalar * $canvas.height();
-    ctx.drawImage($img[0], 0, 0, shrunkWidth, shrunkHeight);
-    ctx.drawImage($canvas[0], 0, 0, shrunkWidth, shrunkHeight, 0, 0, $canvas.width(), $canvas.height());
-  };
-
   // filters out the projects that are just lab assignments from the list of all projects
-  Project.removeLabs = function(projects) {
+  const removeLabs = function(projects) {
     return projects.filter(function(project) { return !/\d\d\s/.test(project.title); })
   }
 
   // filters out projects that were not created by me
-  Project.removeOthersProjects = function(projects) {
+  const removeOthersProjects = function(projects) {
     return projects.filter(function(project) { return project.isOwner });
   }
 
   // gets rid of the learning journal
-  Project.removeJournal = function(projects) {
+  const removeJournal = function(projects) {
     return projects.filter(function(project) { return project.title !== 'Learning Journal'; });
   }
 
@@ -92,7 +50,8 @@ var app = app || {};
       return (new Date(b.pushed_at)) - (new Date(a.pushed_at));
     });
     Project.all = rawData.map(project => new Project(project));
-    Project.visible = Project.removeJournal(Project.removeLabs(Project.removeOthersProjects(Project.all)));
+    // Project.visible = removeJournal(removeLabs(removeOthersProjects(Project.all)));
+    Project.visible = removeJournal(Project.all);
   };
 
   // gets the raw data for the projects. if the data is stored in the localStorage, will retrieve it from there, else will get the data from the GitHub API. after the data has been acquired, initializes the projects part of the page.
@@ -157,6 +116,21 @@ var app = app || {};
       },
       error: function(err) { console.error(err); },
     })
+  }
+
+  // returns a list of Projects that have the given value for the given property
+  Project.with = function(prop, val) {
+    return Project.visible.filter(function(project) {
+      return project[prop] === val;
+    })
+  }
+
+  // returns a list of all the languages the Projects have been written in
+  Project.allLangs = function() {
+    return Project.visible.reduce(function(uniqueLangs, project) {
+      if (!uniqueLangs.includes(project.language)) uniqueLangs.push(project.language);
+      return uniqueLangs;
+    }, []).sort();
   }
 
   module.Project = Project;
