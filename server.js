@@ -26,6 +26,7 @@ function proxyGithub(req, res) {
 // navigation for tabs
 app.get('/info', function(req, res) { res.sendFile('index.html', {root:'./public'}) });
 app.get('/projects', function(req, res) { res.sendFile('index.html', {root:'./public'}) });
+app.get('/projects/:language', function(req, res) { res.sendFile('index.html', {root:'./public'}) });
 
 // proxied authenticated request to GitHub
 app.head('/github/*', proxyGithub);

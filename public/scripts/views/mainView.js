@@ -39,6 +39,34 @@ var app = app || {};
     });
   };
 
+  // event handler for clicking on the select menu to show and hide the menu and change the selected option
+  mainView.handleSelectClick = function() {
+    $('.select-btn').on('click', function(e) {
+      e.preventDefault();
+    });
+    // open/close menu
+    $('.select').on('click', function() {
+      $(this).find('.select-options').slideToggle(TYPING_SPEED);
+    });
+    // close on click off
+    $(document).on('click', function(e) {
+      if (!$(e.target).closest('.select').length) {
+        $('.select-options:visible').slideUp(TYPING_SPEED);
+      }
+    });
+    // change selected option
+    $('.select-options').on('click', 'a', function() {
+      mainView.setSelectOption($(this));
+    })
+  }
+
+  // changes a select menu so that the chosen option is on the button and hidden from the menu
+  mainView.setSelectOption = function(option) {
+    option.parents('.select').find('.select-btn-text').text(option.text());
+    option.siblings().attr('data-selected', false);
+    option.attr('data-selected', true);
+  }
+
   // event handler that checks where on the page the scroll is
   mainView.handlePageScroll = function() {
     $(window).on('scroll', function() {
@@ -63,7 +91,7 @@ var app = app || {};
 
   // types out the info title then prints the text block
   mainView.displayInfoCard = function() {
-    if ($('#info-card h1:not(.bottom):hidden').length > 0) {
+    if ($('#info-card h1:not(.bottom):hidden').length) {
       $('#name-card .cursor').css('animation', 'none').css('opacity', '0');
       $('#info-card h1:not(.bottom)').show();
       mainView.typeOutWords($('#info-card .text-to-write'), TYPING_PAUSE, TYPING_SPEED);
@@ -80,22 +108,38 @@ var app = app || {};
 
   // types out the projects title then prints the project blocks
   mainView.displayProjectCard = function() {
-    if ($('#projects-card h1:not(.bottom):hidden').length > 0) {
+    if ($('#projects-card h1:not(.bottom):hidden').length) {
       $('#info-card .cursor').css('animation', 'none').css('opacity', '0');
       $('#projects-card h1:not(.bottom)').show();
       mainView.typeOutWords($('#projects-card .text-to-write'), TYPING_PAUSE, TYPING_SPEED);
 
       setTimeout(function() {
         $('#projects-card h1:first-child .cursor').css('animation', 'none').css('opacity', '0');
-        $('#project-list').slideDown(BOX_RENDER_SPEED,'linear');
-        app.Project.visible.forEach(function(project) {
-          project.renderPixelImage();
+        $('#projects-card main').slideDown(BOX_RENDER_SPEED,'linear');
+        app.Project.viewable.forEach(function(project) {
+          app.projectView.renderPixelImage(project);
         })
         setTimeout(function() {
           $('#projects-card h1.bottom').show();
         }, BOX_RENDER_SPEED);
       }, TYPING_PAUSE * 3 + $('#projects-card h1').text().length * TYPING_SPEED)
     }
+  }
+
+  // renders the list of projects with the given array of Projects
+  mainView.renderProjectList = function(projects) {
+    $('#project-list').hide();
+    $('#projects-card h1.bottom').hide();
+    app.projectView.initProjects(projects);
+    setTimeout(function() {
+      $('#project-list').slideDown(BOX_RENDER_SPEED);
+      app.Project.viewable.forEach(function(project) {
+        app.projectView.renderPixelImage(project);
+      })
+      setTimeout(function() {
+        if ($('#project-list:visible').length) { $('#projects-card h1.bottom').show(); }
+      }, BOX_RENDER_SPEED);
+    }, TYPING_SPEED)
   }
 
   // given a text element that is siblings with an element with the class of 'cursor', prints each letter to the DOM one at a time at a given speed after a given delay, both in milliseconds
@@ -139,11 +183,12 @@ var app = app || {};
   mainView.initMainPage = function() {
     mainView.handleSocialClick();
     mainView.handleMenuArrowClick();
+    mainView.handleSelectClick();
     mainView.handlePageScroll();
     mainView.typeOutWords($('#name-card .text-to-write'), TYPING_PAUSE, TYPING_SPEED);
-    app.Project.fetchAll(app.projectView.initProjects);
+    app.Project.fetchAll(function() {app.projectView.initProjects(app.Project.viewable)});
     $('#info-card h1, #info-card div').hide();
-    $('#projects-card h1, #project-list').hide();
+    $('#projects-card h1, #projects-card main').hide();
   };
 
   mainView.initMainPage();

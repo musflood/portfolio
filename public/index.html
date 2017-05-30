@@ -12,10 +12,10 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.8/handlebars.js"></script>
     <script src="https://cdn.rawgit.com/visionmedia/page.js/master/page.js"></script>
     <!-- styling -->
-    <link rel="stylesheet" type="text/css" href="styles/base.css">
-    <link rel="stylesheet" type="text/css" href="styles/layout.css">
-    <link rel="stylesheet" type="text/css" href="styles/modules.css">
-    <link rel="icon" type="image/x-icon" href="imgs/mouseicon.png">
+    <link rel="stylesheet" type="text/css" href="/styles/base.css">
+    <link rel="stylesheet" type="text/css" href="/styles/layout.css">
+    <link rel="stylesheet" type="text/css" href="/styles/modules.css">
+    <link rel="icon" type="image/x-icon" href="/imgs/mouseicon.png">
   </head>
   <body>
 
@@ -55,7 +55,7 @@
           <i class="devicons devicons-nodejs_small"></i>
         </aside>
         <main>
-          <p>Hello, my name is Megan Flood and I love working with computers. Though I have a degree in Chemistry from Reed College, I wrote my thesis on the computer modeling of a reaction using the specialized programs of ORCA and GAMESS. I have been expanding my knowledge of computer programming to Python, Java, and various forms of JavaScript. I am always excited to learn new languages and fameworks!</p>
+          <p>Hello, my name is Megan Flood and I love working with computers. Though I have a degree in Chemistry from Reed College, I wrote my thesis on the computer modeling of a reaction using the specialized programs of ORCA and GAMESS. I have been expanding my knowledge of computer programming to Python, Java, and various forms of JavaScript. I am always excited to learn new languages and frameworks!</p>
 
           <p>I also have a deep interest in art and love of creativity. I have experience working in HTML and CSS to design websites, and I apply my creativity to everything I make.</p>
 
@@ -68,7 +68,17 @@
 
     <section id="projects-card">
       <h1>> <span class="text-to-write">projects</span><span class="cursor">&#8718;</span></h1>
-      <div id="project-list"></div>
+      <main>
+        <h2>select
+          <div class="select">
+            <a href='#' class="select-btn"><span class="select-btn-text">ALL</span> <i class="fa fa-caret-down"></i></a>
+            <div class="select-options">
+              <a href="/projects" data-val="" data-selected=true>ALL</a>
+            </div>
+          </div>
+        </h2>
+        <div id="project-list"></div>
+      </main>
       <h1>&nbsp;</h1>
       <h1 class='bottom'>> <span class="cursor">&#8718;</span></h1>
     </section>
@@ -81,6 +91,7 @@
       </ul>
     </footer>
 
+    <!-- filters -->
     <svg id="project-img-filter" class="hide" color-interpolation-filters="sRGB">
       <filter id="monochrome-green">
         <feColorMatrix type="matrix"
@@ -90,6 +101,7 @@
                         0  0 0 1  0" />
       </filter>
     </svg>
+    <!-- templates -->
     <script id="project-template" type="text/x-handlebars-template">
       <a href={{url}} target="_blank">
         <div class="project">
@@ -114,15 +126,18 @@
         </div>
       </a>
     </script>
+    <script id="option-template" type="text/x-handlebars-templage">
+      <a href="/projects/{{val}}" data-val={{val}} data-selected=false>{{textVal}}</a>
+    </script>
     <!-- models -->
-    <script src="scripts/models/project.js"></script>
+    <script src="/scripts/models/project.js"></script>
     <!-- views -->
-    <script src="scripts/views/projectView.js"></script>
-    <script src="scripts/views/mainView.js"></script>
+    <script src="/scripts/views/projectView.js"></script>
+    <script src="/scripts/views/mainView.js"></script>
     <!-- controllers -->
-    <script src="scripts/controllers/nameController.js"></script>
-    <script src="scripts/controllers/infoController.js"></script>
-    <script src="scripts/controllers/projectsController.js"></script>
-    <script src="scripts/controllers/routes.js"></script>
+    <script src="/scripts/controllers/nameController.js"></script>
+    <script src="/scripts/controllers/infoController.js"></script>
+    <script src="/scripts/controllers/projectsController.js"></script>
+    <script src="/scripts/controllers/routes.js"></script>
   </body>
 </html>

@@ -6,7 +6,8 @@ var app = app || {};
 
   const infoController = {};
 
-  infoController.init = function() {
+  // opens the info tab by scrolling to it and highlighting the projects nav item
+  infoController.open = function() {
     $('html, body').animate({
       scrollTop: ($('#info-card').offset().top),
     }, 250);
