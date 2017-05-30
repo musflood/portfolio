@@ -44,7 +44,6 @@ var app = app || {};
   // initailizes the projects tab adding the projects to the DOM
   projectsController.init = function(ctx) {
     app.mainView.renderProjectList(ctx.projects);
-    console.log(`a[data-val="${ctx.params.language ? ctx.params.language : ''}"]`);
     app.mainView.setSelectOption($(`#projects-card .select-options a[data-val="${ctx.params.language ? ctx.params.language : ''}"]`));
   };
 
