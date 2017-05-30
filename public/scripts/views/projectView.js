@@ -55,13 +55,6 @@ var app = app || {};
     $('#projects-card .select-options').append(options);
   };
 
-  // handles a change in the selected filter option
-  projectView.handleFilterClick = function() {
-    $('#projects-card .select-options').on('click', 'a', function() {
-      page(`/projects/${$(this).data('val')}`);
-    });
-  }
-
   // finds the canvas corresponding to the Project and pixelizes the image for the project and renders it to the canvas
   projectView.renderPixelImage = function(project) {
     if ($(`#img-${toKabobCase(project.title)}`).length) {
@@ -102,7 +95,6 @@ var app = app || {};
       }
     });
     // apply event listeners
-    projectView.handleFilterClick();
     projectView.handleViewDesciptionClick();
     projectView.handleWindowResize();
   };

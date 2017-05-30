@@ -50,8 +50,7 @@ var app = app || {};
       return (new Date(b.pushed_at)) - (new Date(a.pushed_at));
     });
     Project.all = rawData.map(project => new Project(project));
-    // Project.visible = removeJournal(removeLabs(removeOthersProjects(Project.all)));
-    Project.visible = removeJournal(Project.all);
+    Project.visible = removeJournal(removeLabs(removeOthersProjects(Project.all)));
   };
 
   // gets the raw data for the projects. if the data is stored in the localStorage, will retrieve it from there, else will get the data from the GitHub API. after the data has been acquired, initializes the projects part of the page.

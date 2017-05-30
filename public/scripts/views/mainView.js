@@ -41,9 +41,11 @@ var app = app || {};
 
   // event handler for clicking on the select menu to show and hide the menu and change the selected option
   mainView.handleSelectClick = function() {
-    // open/close menu
-    $('.select').on('click', function(e) {
+    $('.select-btn').on('click', function(e) {
       e.preventDefault();
+    });
+    // open/close menu
+    $('.select').on('click', function() {
       $(this).find('.select-options').slideToggle(TYPING_SPEED);
     });
     // close on click off
@@ -124,6 +126,7 @@ var app = app || {};
     }
   }
 
+  // renders the list of projects with the given array of Projects
   mainView.renderProjectList = function(projects) {
     $('#project-list').hide();
     $('#projects-card h1.bottom').hide();
