@@ -1,0 +1,43 @@
+@import '../base/variables';
+
+nav {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  transition: bottom 100ms;
+  width: 100%;
+}
+
+nav.hide {
+  display: block;
+  bottom: -11em;
+}
+
+#social {
+  position: fixed;
+  bottom: 1em;
+  right: 1em;
+  text-align: right;
+}
+
+@media screen and (min-width: $breakpoint) {
+  nav {
+    right: 0;
+    left: auto;
+    transition: initial;
+    width: auto;
+  }
+
+  nav.hide {
+    bottom: 0;
+  }
+
+  #social {
+    top: 1em;
+    bottom: auto;
+  }
+
+  #nav-arrow, .fa-chevron-circle-up {
+    display: none;
+  }
+}

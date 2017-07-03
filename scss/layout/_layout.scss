@@ -1,0 +1,19 @@
+@import '../base/variables';
+
+@media screen and (min-width: $breakpoint) {
+  #info-card aside {
+    width: 30%;
+  }
+
+  #info-card main {
+    width: 60%;
+  }
+}
+
+.project .project-image {
+position: relative;
+}
+
+.project-image canvas {
+position: absolute;
+}
