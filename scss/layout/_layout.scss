@@ -14,12 +14,8 @@
 
 }
 
-.project {
-  .project-image {
-    position: relative;
-
-    canvas {
-      position: absolute;
-    }
-  }
+.bottom {
+  position: absolute;
+  bottom: 0;
+  margin-bottom: .25em;
 }

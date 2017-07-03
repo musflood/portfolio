@@ -33,11 +33,13 @@
         padding: 0;
         width: auto;
         display: inline-block;
+        position: relative;
 
         canvas {
           -webkit-filter: url(#monochrome-green);
           filter:  url(#monochrome-green);
           transition: 1000ms;
+          position: absolute;
         }
 
         img {
