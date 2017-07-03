@@ -1,0 +1,15 @@
+@keyframes blink {
+  0%, 25% {
+    opacity: 1;
+  }
+  26%, 74% {
+    opacity: 0;
+  }
+  75%, 100% {
+    opacity: 1;
+  }
+}
+
+.cursor {
+  animation: 2.5s blink infinite;
+}

@@ -1,0 +1,19 @@
+@import '../base/variables';
+
+footer {
+  margin-top: 3em;
+  padding: $padding-min;
+
+  li {
+    list-style: none;
+    display: inline-block;
+    font-size: $padding-min;
+    margin-right: $padding-min;
+  }
+}
+
+@media screen and (min-width: $breakpoint) {
+  footer {
+    width: calc(100% - #{30 * $padding-min});
+  }
+}

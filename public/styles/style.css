@@ -1,0 +1,296 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-size: 1em;
+  font-weight: normal;
+  font-style: normal; }
+
+html, body {
+  height: 100%; }
+
+body {
+  background: #000;
+  font-family: "VT323", monospace;
+  color: #46FC3E; }
+
+section {
+  min-height: 100%;
+  padding: 1em;
+  position: relative; }
+
+@media screen and (min-width: 640px) {
+  section {
+    padding-right: 4em; } }
+h1 {
+  font-size: 2.827em;
+  letter-spacing: .1em;
+  padding-left: 1em;
+  text-indent: -1em; }
+
+@media screen and (min-width: 500px) {
+  h1 {
+    font-size: 3.998em; } }
+h2 {
+  font-size: 2.827em; }
+
+p, i, time, li {
+  font-size: 1.414em; }
+
+em {
+  font-style: italic; }
+
+a {
+  color: #46FC3E;
+  text-decoration: none; }
+  a:hover {
+    color: #fff; }
+  a:focus {
+    outline: none; }
+
+i, img, canvas {
+  width: auto; }
+
+canvas {
+  max-width: 100%; }
+
+img {
+  max-width: calc(100% - 1px); }
+
+.hide {
+  display: none; }
+
+.clear-fix {
+  clear: both; }
+
+@media screen and (min-width: 640px) {
+  #info-card aside {
+    width: 30%; }
+  #info-card main {
+    width: 60%; } }
+.bottom {
+  position: absolute;
+  bottom: 0;
+  margin-bottom: .25em; }
+
+nav {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  transition: bottom 100ms;
+  width: 100%;
+  background: #000;
+  padding: 1em;
+  z-index: 1000; }
+  nav.hide {
+    display: block;
+    bottom: -11em; }
+  nav li {
+    list-style: none;
+    font-size: 2.827em; }
+  nav a {
+    padding: 0 .1em; }
+    nav a:focus {
+      background: #46FC3E;
+      color: #000; }
+
+#social {
+  position: fixed;
+  bottom: 1em;
+  right: 1em;
+  text-align: right;
+  width: auto;
+  z-index: 1000; }
+  #social li {
+    display: inline-block;
+    position: relative;
+    left: 0;
+    width: auto;
+    list-style: none;
+    text-align: center;
+    font-size: 2em;
+    line-height: 0;
+    margin-left: 1em;
+    transition: left 100ms; }
+    #social li:not(:last-child).hide {
+      display: inline-block;
+      left: 11em; }
+  #social a {
+    padding: 0 .1em; }
+    #social a:focus {
+      background: #46FC3E;
+      color: #000; }
+
+.fa-chevron-circle-up {
+  transition: 100ms; }
+
+.down {
+  transform: rotate(180deg); }
+
+@media screen and (min-width: 640px) {
+  nav {
+    right: 0;
+    left: auto;
+    transition: initial;
+    width: auto;
+    padding-left: 0; }
+    nav.hide {
+      bottom: 0; }
+    nav ul {
+      text-align: right; }
+    nav li {
+      display: inline-block;
+      width: auto;
+      margin-left: 1em; }
+      nav li:first-child {
+        margin-left: 0.5em; }
+
+  #social {
+    top: 1em;
+    bottom: auto; }
+    #social li {
+      display: block;
+      text-align: right;
+      padding-left: 0;
+      padding-bottom: 1em; }
+      #social li:not(:last-child).hide {
+        display: block;
+        left: 0; }
+
+  #nav-arrow, .fa-chevron-circle-up {
+    display: none; } }
+@keyframes blink {
+  0%, 25% {
+    opacity: 1; }
+  26%, 74% {
+    opacity: 0; }
+  75%, 100% {
+    opacity: 1; } }
+.cursor {
+  animation: 2.5s blink infinite; }
+
+#info-card aside {
+  text-align: center;
+  font-size: 1.7em;
+  margin: 1em; }
+#info-card main {
+  margin: 0 3em; }
+#info-card p {
+  margin-bottom: 1em; }
+
+@media screen and (min-width: 640px) {
+  #info-card h1:first-child {
+    margin-bottom: 5%; }
+  #info-card div {
+    text-align: center; }
+  #info-card aside, #info-card main {
+    display: inline-block;
+    vertical-align: middle; }
+  #info-card aside {
+    font-size: 3em;
+    margin: 0 0.5em; }
+  #info-card main {
+    text-align: left;
+    margin: 0; } }
+#projects-card h1:first-child {
+  margin-bottom: .3em; }
+#projects-card main h2:first-child {
+  margin-bottom: 1.5em; }
+
+@media screen and (min-width: 640px) {
+  #projects-card {
+    height: auto; } }
+.select {
+  display: inline-block;
+  width: calc(100% - 3em);
+  max-width: 6em;
+  background: #000;
+  position: relative; }
+  .select a {
+    display: block;
+    padding: 0 .1em; }
+    .select a:hover {
+      background: #46FC3E;
+      color: #000; }
+  .select .fa {
+    float: right; }
+
+.select-btn {
+  border: 2px #46FC3E solid; }
+
+.select-options {
+  display: none;
+  width: 100%;
+  background: #000;
+  position: absolute;
+  z-index: 1000; }
+  .select-options a[data-selected=true] {
+    display: none; }
+
+@media screen and (min-width: 640px) {
+  .select {
+    min-width: 6em;
+    width: 20%; } }
+#project-list {
+  margin-bottom: 3.998em; }
+  #project-list a:hover {
+    color: #46FC3E; }
+  #project-list .project {
+    border: 2px #46FC3E solid;
+    margin: 2em 3em;
+    padding: 1em; }
+    #project-list .project:hover canvas {
+      opacity: 0; }
+    #project-list .project div {
+      margin-top: 1em; }
+    #project-list .project .project-image-box {
+      text-align: center;
+      margin: 1em; }
+      #project-list .project .project-image-box .project-image {
+        margin: 0;
+        padding: 0;
+        width: auto;
+        display: inline-block;
+        position: relative; }
+        #project-list .project .project-image-box .project-image canvas {
+          -webkit-filter: url(#monochrome-green);
+          filter: url(#monochrome-green);
+          transition: 1000ms;
+          position: absolute; }
+        #project-list .project .project-image-box .project-image img {
+          max-height: 15em; }
+    #project-list .project .more {
+      font-size: 1.414em;
+      float: right; }
+      #project-list .project .more:hover {
+        color: #fff; }
+    #project-list .project p {
+      margin-bottom: 1em; }
+      #project-list .project p:last-child {
+        margin-bottom: 0; }
+    #project-list .project .details {
+      margin-bottom: 0; }
+
+@media screen and (min-width: 640px) {
+  #project-list {
+    text-align: center; }
+    #project-list .project {
+      width: 31em;
+      text-align: left;
+      display: inline-block;
+      vertical-align: top;
+      margin: 1em; } }
+footer {
+  margin-top: 3em;
+  padding: 1em; }
+  footer li {
+    list-style: none;
+    display: inline-block;
+    font-size: 1em;
+    margin-right: 1em; }
+
+@media screen and (min-width: 640px) {
+  footer {
+    width: calc(100% - 30em); } }
+
+/*# sourceMappingURL=style.css.map */

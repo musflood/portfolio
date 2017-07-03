@@ -1,0 +1,77 @@
+@import 'variables';
+
+body {
+  background: $color-background;
+  font-family: $font-stack;
+  color: $color-primary;
+}
+
+section {
+  min-height: 100%;
+  padding: $padding-min;
+  position: relative;
+}
+
+@media screen and (min-width: $breakpoint) {
+  section {
+    padding-right: 4em;
+  }
+}
+
+h1 {
+  font-size: $font-size-h2;
+  letter-spacing: .1em;
+  padding-left: $padding-min;
+  text-indent: -1em;
+}
+
+@media screen and (min-width: $breakpoint-minor) {
+  h1 {
+    font-size: $font-size-h1;
+  }
+}
+
+h2 {
+  font-size: $font-size-h2;
+}
+
+p, i, time, li {
+  font-size: $font-size-p;
+}
+
+em {
+  font-style: italic;
+}
+
+a {
+  color: $color-primary;
+  text-decoration: none;
+
+  &:hover {
+    color: $color-accent;
+  }
+
+  &:focus {
+    outline: none;
+  }
+}
+
+i, img, canvas {
+  width: auto;
+}
+
+canvas {
+  max-width: 100%;
+}
+
+img {
+  max-width: calc(100% - 1px);
+}
+
+.hide {
+  display: none;
+}
+
+.clear-fix {
+  clear: both;
+}

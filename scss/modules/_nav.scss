@@ -1,0 +1,124 @@
+@import '../base/variables';
+
+nav {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  transition: bottom 100ms;
+  width: 100%;
+  background: $color-background;
+  padding: $padding-min;
+  z-index: 1000;
+
+  &.hide {
+    display: block;
+    bottom: -11em;
+  }
+
+  li {
+    list-style: none;
+    font-size: $font-size-h2;
+  }
+
+  a {
+    padding: 0 .1em;
+
+    &:focus {
+      background: $color-primary;
+      color: $color-background;
+    }
+  }
+}
+
+#social {
+  position: fixed;
+  bottom: $padding-min;
+  right: $padding-min;
+  text-align: right;
+  width: auto;
+  z-index: 1000;
+
+  li {
+    display: inline-block;
+    position: relative;
+    left: 0;
+    width: auto;
+    list-style: none;
+    text-align: center;
+    font-size: 2em;
+    line-height: 0;
+    margin-left: $padding-min;
+    transition: left 100ms;
+
+    &:not(:last-child).hide {
+      display: inline-block;
+      left: 11em;
+    }
+  }
+
+  a {
+    padding: 0 .1em;
+
+    &:focus {
+      background: $color-primary;
+      color: $color-background;
+    }
+  }
+}
+
+.fa-chevron-circle-up {
+  transition: 100ms;
+}
+
+.down {
+  transform: rotate(180deg);
+}
+
+@media screen and (min-width: $breakpoint) {
+  nav {
+    right: 0;
+    left: auto;
+    transition: initial;
+    width: auto;
+    padding-left: 0;
+
+    &.hide {
+      bottom: 0;
+    }
+
+    ul {
+      text-align: right;
+    }
+
+    li {
+      display: inline-block;
+      width: auto;
+      margin-left: $padding-min;
+
+      &:first-child {
+        margin-left: $padding-min / 2;
+      }
+    }
+  }
+
+  #social {
+    top: $padding-min;
+    bottom: auto;
+
+    li {
+      display: block;
+      text-align: right;
+      padding-left: 0;
+      padding-bottom: $padding-min;
+
+      &:not(:last-child).hide {
+        display: block;
+        left: 0;
+      }
+    }
+  }
+
+  #nav-arrow, .fa-chevron-circle-up {
+    display: none;
+  }
+}
