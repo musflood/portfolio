@@ -19,7 +19,7 @@ section {
 }
 
 h1 {
-  font-size: $font-size-h1;
+  font-size: $font-size-h2;
   letter-spacing: .1em;
   padding-left: $padding-min;
   text-indent: -1em;
@@ -27,7 +27,7 @@ h1 {
 
 @media screen and (min-width: $breakpoint-minor) {
   h1 {
-    font-size: $font-size-h1 - 0.002em;
+    font-size: $font-size-h1;
   }
 }
 

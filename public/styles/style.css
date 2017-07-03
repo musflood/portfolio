@@ -23,14 +23,14 @@ section {
   section {
     padding-right: 4em; } }
 h1 {
-  font-size: 3.1em;
+  font-size: 2.827em;
   letter-spacing: .1em;
   padding-left: 1em;
   text-indent: -1em; }
 
 @media screen and (min-width: 500px) {
   h1 {
-    font-size: 3.098em; } }
+    font-size: 3.998em; } }
 h2 {
   font-size: 2.827em; }
 
@@ -198,5 +198,83 @@ nav {
 @media screen and (min-width: 640px) {
   #projects-card {
     height: auto; } }
+.select {
+  display: inline-block;
+  width: calc(100% - 3em);
+  max-width: 6em;
+  background: #000;
+  position: relative; }
+  .select a {
+    display: block;
+    padding: 0 .1em; }
+    .select a:hover {
+      background: #46FC3E;
+      color: #000; }
+  .select .fa {
+    float: right; }
+
+.select-btn {
+  border: 2px #46FC3E solid; }
+
+.select-options {
+  display: none;
+  width: 100%;
+  background: #000;
+  position: absolute;
+  z-index: 1000; }
+  .select-options a[data-selected=true] {
+    display: none; }
+
+@media screen and (min-width: 640px) {
+  .select {
+    min-width: 6em;
+    width: 20%; } }
+#project-list {
+  margin-bottom: 3.998em; }
+  #project-list a:hover {
+    color: #46FC3E; }
+  #project-list .project {
+    border: 2px #46FC3E solid;
+    margin: 2em 3em;
+    padding: 1em; }
+    #project-list .project:hover canvas {
+      opacity: 0; }
+    #project-list .project div {
+      margin-top: 1em; }
+    #project-list .project .project-image-box {
+      text-align: center;
+      margin: 1em; }
+      #project-list .project .project-image-box .project-image {
+        margin: 0;
+        padding: 0;
+        width: auto;
+        display: inline-block; }
+        #project-list .project .project-image-box .project-image canvas {
+          -webkit-filter: url(#monochrome-green);
+          filter: url(#monochrome-green);
+          transition: 1000ms; }
+        #project-list .project .project-image-box .project-image img {
+          max-height: 15em; }
+    #project-list .project .more {
+      font-size: 1.414em;
+      float: right; }
+      #project-list .project .more:hover {
+        color: #fff; }
+    #project-list .project p {
+      margin-bottom: 1em; }
+      #project-list .project p:last-child {
+        margin-bottom: 0; }
+    #project-list .project .details {
+      margin-bottom: 0; }
+
+@media screen and (min-width: 640px) {
+  #project-list {
+    text-align: center; }
+    #project-list .project {
+      width: 31em;
+      text-align: left;
+      display: inline-block;
+      vertical-align: top;
+      margin: 1em; } }
 
 /*# sourceMappingURL=style.css.map */

@@ -1,0 +1,50 @@
+@import '../base/variables';
+
+$width: 6em;
+
+.select {
+  display: inline-block;
+  width: calc(100% - #{$width / 2});
+  max-width: $width;
+  background: $color-background;
+  position: relative;
+
+  a {
+    display: block;
+    padding: 0 .1em;
+
+    &:hover {
+      background: $color-primary;
+      color: $color-background;
+    }
+  }
+
+  .fa {
+    float: right;
+  }
+}
+
+.select-btn {
+  border: 2px $color-primary solid;
+}
+
+.select-options {
+  display: none;
+  width: 100%;
+  background: $color-background;
+  position: absolute;
+  z-index: 1000;
+
+  a {
+    &[data-selected=true] {
+      display: none;
+    }
+  }
+}
+
+@media screen and (min-width: $breakpoint) {
+  .select {
+    min-width: $width;
+    width: 20%;
+  }
+}
