@@ -56,13 +56,16 @@ a {
   }
 }
 
-i {
+i, img, canvas {
   width: auto;
 }
 
-img, canvas {
-  width: auto;
+canvas {
   max-width: 100%;
+}
+
+img {
+  max-width: calc(100% - 1px);
 }
 
 .hide {

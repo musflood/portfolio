@@ -63,3 +63,7 @@ Session.vim
 
 # auto-generated tag files
 tags
+
+### Sass ###
+.sass-cache/
+*.css.map
