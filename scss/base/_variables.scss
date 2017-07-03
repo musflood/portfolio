@@ -1,8 +1,14 @@
 $font-stack: 'VT323', monospace;
 
-$primary-color: #46FC3E;
-$background-color: #000;
-$accent-color: #fff;
+$color-primary: #46FC3E;
+$color-background: #000;
+$color-accent: #fff;
 
 $breakpoint: 640px;
-$minor-breakpoint: 500px;
+$breakpoint-minor: 500px;
+
+$padding-min: 1em;
+
+$font-size-h1: 3.1em;
+$font-size-h2: 2.827em;
+$font-size-p: 1.414em;

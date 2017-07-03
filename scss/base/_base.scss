@@ -1,14 +1,14 @@
 @import 'variables';
 
 body {
-  background: $background-color;
+  background: $color-background;
   font-family: $font-stack;
-  color: $primary-color;
+  color: $color-primary;
 }
 
 section {
   min-height: 100%;
-  padding: 1em;
+  padding: $padding-min;
   position: relative;
 }
 
@@ -19,24 +19,24 @@ section {
 }
 
 h1 {
-  font-size: 3.1em;
+  font-size: $font-size-h1;
   letter-spacing: .1em;
-  padding-left: 1em;
+  padding-left: $padding-min;
   text-indent: -1em;
 }
 
-@media screen and (min-width: $minor-breakpoint) {
+@media screen and (min-width: $breakpoint-minor) {
   h1 {
-    font-size: 3.998em;
+    font-size: $font-size-h1 - 0.002em;
   }
 }
 
 h2 {
-  font-size: 2.827em;
+  font-size: $font-size-h2;
 }
 
 p, i, time, li {
-  font-size: 1.414em;
+  font-size: $font-size-p;
 }
 
 em {
@@ -44,16 +44,16 @@ em {
 }
 
 a {
-  color: $primary-color;
+  color: $color-primary;
   text-decoration: none;
-}
 
-a:hover {
-  color: $accent-color;
-}
+  &:hover {
+    color: $color-accent;
+  }
 
-a:focus {
-  outline: none;
+  &:focus {
+    outline: none;
+  }
 }
 
 i {
