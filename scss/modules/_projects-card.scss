@@ -1,6 +1,10 @@
-@import '../base/variables';
+@import '../variables';
 
 #projects-card {
+  @include at-least($breakpoint) {
+    height: auto;
+  }
+
   h1 {
     &:first-child {
       margin-bottom: .3em;
@@ -16,8 +20,16 @@
   }
 }
 
-@media screen and (min-width: $breakpoint) {
-  #projects-card {
-    height: auto;
+#project-list {
+  margin-bottom: $font-size-h1;
+
+  @include at-least($breakpoint) {
+    text-align: center;
+  }
+
+  a {
+    &:hover {
+      color: $color-primary;
+    }
   }
 }

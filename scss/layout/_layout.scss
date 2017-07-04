@@ -1,6 +1,6 @@
-@import '../base/variables';
+@import '../variables';
 
-@media screen and (min-width: $breakpoint) {
+@include at-least($breakpoint) {
 
   #info-card {
     aside {
