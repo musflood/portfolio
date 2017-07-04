@@ -1,0 +1,45 @@
+@import '../variables';
+
+#info-card {
+  aside {
+    text-align: center;
+    font-size: 1.7em;
+    margin: $padding-min;  
+
+    @include at-least($breakpoint) {
+      display: inline-block;
+      vertical-align: middle;
+      font-size: 3em;
+      margin: 0 $padding-min/2;
+      width: 30%;
+    }
+  }
+
+  main {
+    margin: 0 3em;
+
+    @include at-least($breakpoint) {
+      display: inline-block;
+      vertical-align: middle;
+      text-align: left;
+      margin: 0;
+      width: 60%;
+    }
+  }
+
+  p {
+    margin-bottom: $padding-min;
+  }
+
+  @include at-least($breakpoint) {
+    h1 {
+      &:first-child {
+        margin-bottom: 5%;
+      }
+    }
+
+    div {
+      text-align: center;
+    }
+  }
+}

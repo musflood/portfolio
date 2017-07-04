@@ -1,4 +1,4 @@
-@import '../base/variables';
+@import '../variables';
 
 $width: 6em;
 
@@ -8,6 +8,11 @@ $width: 6em;
   max-width: $width;
   background: $color-background;
   position: relative;
+
+  @include at-least($breakpoint) {
+    min-width: $width;
+    width: 20%;
+  }
 
   a {
     display: block;
@@ -39,12 +44,5 @@ $width: 6em;
     &[data-selected=true] {
       display: none;
     }
-  }
-}
-
-@media screen and (min-width: $breakpoint) {
-  .select {
-    min-width: $width;
-    width: 20%;
   }
 }

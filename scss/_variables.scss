@@ -12,3 +12,9 @@ $padding-min: 1em;
 $font-size-h1: 3.998em;
 $font-size-h2: 2.827em;
 $font-size-p: 1.414em;
+
+@mixin at-least($device-width) {
+  @media screen and (min-width: $device-width) {
+    @content
+  }
+}

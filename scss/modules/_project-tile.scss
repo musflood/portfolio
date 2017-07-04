@@ -1,86 +1,70 @@
-@import '../base/variables';
+@import '../variables';
 
-#project-list {
-  margin-bottom: $font-size-h1;
+.project {
+  border: 2px $color-primary solid;
+  margin: 2em 3em;
+  padding: $padding-min;
 
-  a {
-    &:hover {
-      color: $color-primary;
+  @include at-least($breakpoint) {
+    width: 31em;
+    text-align: left;
+    display: inline-block;
+    vertical-align: top;
+    margin: $padding-min;
+  }
+
+  &:hover {
+    canvas {
+      opacity: 0;
     }
   }
 
-  .project {
-    border: 2px $color-primary solid;
-    margin: 2em 3em;
-    padding: $padding-min;
+  div {
+    margin-top: $padding-min;
+  }
+
+  .more {
+    font-size: $font-size-p;
+    float: right;
 
     &:hover {
-      canvas {
-        opacity: 0;
-      }
+      color: $color-accent;
     }
+  }
 
-    div {
-      margin-top: $padding-min;
-    }
+  p {
+    margin-bottom: $padding-min;
 
-    .project-image-box {
-      text-align: center;
-      margin: $padding-min;
-
-      .project-image {
-        margin: 0;
-        padding: 0;
-        width: auto;
-        display: inline-block;
-        position: relative;
-
-        canvas {
-          -webkit-filter: url(#monochrome-green);
-          filter:  url(#monochrome-green);
-          transition: 1000ms;
-          position: absolute;
-        }
-
-        img {
-          max-height: 15em;
-        }
-      }
-    }
-
-    .more {
-      font-size: $font-size-p;
-      float: right;
-
-      &:hover {
-        color: $color-accent;
-      }
-    }
-
-    p {
-      margin-bottom: $padding-min;
-
-      &:last-child {
-        margin-bottom: 0;
-      }
-    }
-
-    .details {
+    &:last-child {
       margin-bottom: 0;
     }
   }
+
+  .details {
+    margin-bottom: 0;
+  }
 }
 
-@media screen and (min-width: $breakpoint) {
-  #project-list {
-    text-align: center;
+.project-image-box {
+  text-align: center;
+  margin: $padding-min;
 
-    .project {
-      width: 31em;
-      text-align: left;
-      display: inline-block;
-      vertical-align: top;
-      margin: $padding-min;
+  .project-image {
+    margin: 0;
+    padding: 0;
+    width: auto;
+    display: inline-block;
+    position: relative;
+
+    canvas {
+      -webkit-filter: url(#monochrome-green);
+      filter:  url(#monochrome-green);
+      transition: 1000ms;
+      position: absolute;
+    }
+
+    img {
+      max-height: 15em;
     }
   }
 }

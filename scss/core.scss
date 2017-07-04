@@ -1,10 +1,12 @@
 @import 'base/reset';
 @import 'base/base';
-@import 'layout/layout';
+
+@import 'layout/info-card';
+@import 'layout/projects-card';
+
 @import 'modules/nav';
 @import 'modules/animations';
-@import 'modules/info-card';
-@import 'modules/projects-card';
 @import 'modules/select';
 @import 'modules/project-tile';
+@import 'modules/bottom-line';
 @import 'modules/footer';
