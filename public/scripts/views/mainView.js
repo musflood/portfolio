@@ -189,6 +189,7 @@ var app = app || {};
     app.Project.fetchAll(function() {app.projectView.initProjects(app.Project.viewable)});
     $('#info-card h1, #info-card div').hide();
     $('#projects-card h1, #projects-card main').hide();
+    app.consoleView.initConsole();
   };
 
   mainView.initMainPage();
