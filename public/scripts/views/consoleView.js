@@ -12,9 +12,18 @@ var app = app || {};
   consoleView.handleTyping = function() {
     $(document).on('keydown', function(e) {
       let $console = $('.console-line');
-      if (e.keyCode === 13) {
+      let key = e.keyCode;
+      let char = e.key;
+      if (key === 13) {
         console.log('new line');
         $console.removeClass('console-line').after(newLine);
+      } else if (key === 8) {
+        console.log('backspace');
+        if ($console.contents().length > 1) $console.contents().last().remove();
+      } else if (key >= 48 && key <= 90 || key === 32){
+        console.log('writing:', char);
+        if (key === 32) e.preventDefault();
+        $console.append(char);
       }
     })
   }

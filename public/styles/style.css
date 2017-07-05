@@ -213,7 +213,8 @@ nav {
 
 .console {
   padding-left: 0;
-  text-indent: 0; }
+  text-indent: 0;
+  word-wrap: break-word; }
 
 .select {
   display: inline-block;
