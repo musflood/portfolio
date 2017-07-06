@@ -87,8 +87,7 @@ var app = app || {};
           $('.tab[data-locate="info-card"]').focus();
         }
       } else {
-        console.log('showing console');
-        if ($(window).scrollTop() >= triggerHeight * 4 + $('#name-card').height() - $(window).height()) {
+        if ($(window).scrollTop() >= triggerHeight * 5 + $('#name-card').height() - $(window).height()) {
           $(document).off('keydown');
           mainView.displayInfoCard();
           $('.tab[data-locate="info-card"]').focus();

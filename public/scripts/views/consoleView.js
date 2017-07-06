@@ -29,10 +29,10 @@ var app = app || {};
       if (key === 13) {
         // enter key
         e.preventDefault()
-        $console.removeClass('console-line').after(nextConsoleLine($console));
+        $console.removeClass('console-line').addClass('command').after(nextConsoleLine($console));
         if ($('.console').height() + $('h1').height() * 2 > $(window).height()) {
           $('html, body').animate({
-            scrollTop: `+=${$('h1').height() * 1.25}`,
+            scrollTop: `${$('#name-card').height() - $(window).height() + $('h1').height() * 2}`,
           }, 100);
         }
       } else if (key === 8) {
@@ -51,7 +51,7 @@ var app = app || {};
     if ($currLine.contents().length === 1) {
       return newLine;
     }
-    return '<br>' + $currLine.text().substring(2) + newLine;
+    return `<br><span class="result">${$currLine.text().substring(2)}</span>${newLine}`;
   }
 
   // initializes the 'console' on the page. adds a listener to start the console if the user presses 'enter' once the first line has finished typing out itself.
