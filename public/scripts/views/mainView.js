@@ -75,7 +75,8 @@ var app = app || {};
         $('.tab[data-locate="name-card"]').focus();
         $('#social li:not(:last-child)').removeClass('hide');
       }
-      if ($(window).scrollTop() >= triggerHeight) {
+      if ($(window).scrollTop() >= (triggerHeight + $('.console:first').height() / 2)) {
+        $(document).off('keydown');
         mainView.displayInfoCard();
         $('.tab[data-locate="info-card"]').focus();
         if (!$('.fa-chevron-circle-up').hasClass('down')) {
@@ -166,13 +167,13 @@ var app = app || {};
 
     $element.html('');
     setTimeout(function() {
-      $element.siblings('.cursor').css('animation', 'none');
+      $element.siblings('.cursor').css('animation-name', 'none');
       let i = 0;
       let interval = setInterval(function() {
         $element.html(letters.slice(0, i).join(''));
         if (i === letters.length) {
           clearInterval(interval);
-          $element.siblings('.cursor').css('animation', '2.5s blink infinite');
+          $element.siblings('.cursor').css('animation-name', 'blink');
         }
         i++;
       }, speed);

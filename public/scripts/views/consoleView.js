@@ -10,18 +10,22 @@ var app = app || {};
   let newLine = `<br>${$('.console-line')[0].outerHTML}`;
 
   consoleView.handleTyping = function() {
+    let lastTimePressed;
     $(document).on('keydown', function(e) {
+      $('.console .cursor').css('animation-name', 'none');
       let $console = $('.console-line');
       let key = e.keyCode;
       let char = e.key;
+      lastTimePressed = e.timeStamp;
       if (key === 13) {
-        console.log('new line');
+        // enter key
         $console.removeClass('console-line').after(newLine);
       } else if (key === 8) {
-        console.log('backspace');
+        // backspace key
+        e.preventDefault()
         if ($console.contents().length > 1) $console.contents().last().remove();
-      } else if (key >= 48 && key <= 90 || key === 32){
-        console.log('writing:', char);
+      } else if ((key >= 48 && key <= 90) || key === 32 || (key >= 186 && key !== 224)){
+        // alphanumeric || space || punctuation
         if (key === 32) e.preventDefault();
         $console.append(char);
       }
@@ -30,7 +34,7 @@ var app = app || {};
 
   consoleView.initConsole = function() {
     $(document).on('keydown', function(e) {
-      if (e.keyCode === 13 && $('h1:first').text().includes('m') && $('h1:first .cursor').css('animation').includes('blink')) {
+      if (e.keyCode === 13 && $('h1:first').text().includes('d')) {
         $(this).off('keydown');
         $('h1:first .cursor').css('animation', 'none').hide();
         $('.console').removeClass('hide');
