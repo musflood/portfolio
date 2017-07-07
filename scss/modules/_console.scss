@@ -11,5 +11,11 @@
     column-count: 2;
     display: inline-block;
     width: 100%;
+    white-space: nowrap;
+  }
+
+  .help-text {
+    padding-left: 2em;
+    display: inline-block;
   }
 }

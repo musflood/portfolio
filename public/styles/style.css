@@ -222,7 +222,11 @@ nav {
     /* Firefox */
     column-count: 2;
     display: inline-block;
-    width: 100%; }
+    width: 100%;
+    white-space: nowrap; }
+  .console .help-text {
+    padding-left: 2em;
+    display: inline-block; }
 
 .select {
   display: inline-block;
