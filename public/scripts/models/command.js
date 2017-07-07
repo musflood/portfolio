@@ -4,31 +4,33 @@ var app = app || {};
 
 (function(module) {
 
+  // given a string that consists of a command and the arguments for that command separated by spaces, creates a new Command object that stores the command and the arguments.
   function Command(text) {
     this.exe = text.split(' ')[0];
     this.arg = text.includes(' ') ? text.substring(text.indexOf(' ') + 1) : '';
   }
 
-  Command.lib = {};
+  // library of the valid bash commands for the console
+  const lib = {};
 
-  // use eval for js
-  // Command.lib[input command]() will invoke the function
-  Command.prototype.execute = function() {
-    // simple math
-    console.log(this.exe);
-    console.log(this.arg);
-    return evalMath(this.arg);
-    return `-bash: ${this.text.split(' ')[0]}: command not found`;
+  // bash command help desplays information about the given command
+  lib.help = function(c) {
+    if (!c) return `These shell commands are defined internally.  Type \`help' to see this list.<br>Type \`help name' to find out more about the function \`name'.<br><br><span class="col-list">${Object.keys(lib).join('<br>')}</span>`
   }
 
-  const evalMath = function(c) {
-    let result = `-bash: not a decimal number: ${c.split(' ')[0]}`;
+  lib.clear = function() {
+    return { clear: true };
+  }
+
+  // bash command expr evaluates a simple mathematical expression
+  lib.expr = function(c) {
+    if (!c) return 'expr: syntax error';
+    let result = `expr: not a decimal number: ${c.split(' ')[0]}`;
     if (/\d\s*[\+\/\-\*%()]/.test(c) && !/[A-Za-z_]/.test(c)) {
       try {
         result = eval(c);
       } catch (e) {
-        console.log(e);
-        result = '-bash: syntax error near unexpected token `';
+        result = 'expr: syntax error near unexpected token `';
         if (e.message.toLowerCase().includes('unexpected token')) result += e.message.substring(17);
         else if (e.message.toLowerCase().includes('missing')) result += '(';
         else if (e.message.toLowerCase().includes('invalid')) result += /\D/.exec(c);
@@ -36,6 +38,19 @@ var app = app || {};
       }
     }
     return result;
+  }
+
+  // use eval for js
+  // Command.lib[input command]() will invoke the function
+  Command.prototype.execute = function() {
+    // simple math
+    console.log('entered command:', this.exe);
+    console.log('with the argument:',this.arg);
+    try {
+      return lib[this.exe.toLowerCase()](this.arg);
+    } catch (e){
+      return `-bash: ${this.exe}: command not found`;
+    }
   }
 
   module.Command = Command;

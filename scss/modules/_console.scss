@@ -4,4 +4,12 @@
   padding-left: 0;
   text-indent: 0;
   word-wrap: break-word;
+
+  .col-list {
+    -webkit-column-count: 2; /* Chrome, Safari, Opera */
+    -moz-column-count: 2; /* Firefox */
+    column-count: 2;
+    display: inline-block;
+    width: 100%;
+  }
 }

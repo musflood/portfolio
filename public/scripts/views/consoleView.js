@@ -29,11 +29,13 @@ var app = app || {};
       if (key === 13) {
         // enter key
         e.preventDefault()
-        $console.removeClass('console-line').addClass('command').after(nextConsoleLine($console));
-        if ($('.console').height() + $('h1').height() * 2 > $(window).height()) {
-          $('html, body').animate({
-            scrollTop: `${$('#name-card').height() - $(window).height() + $('h1').height() * 2}`,
-          }, 100);
+        let result = nextConsoleLine($console);
+        if (result.clear) {
+          let $terminal = $console.parent();
+          $terminal.children(':not(.cursor)').remove()
+          $terminal.prepend(newLine.substring(4));
+        } else {
+          $console.removeClass('console-line').addClass('command').after(result);
         }
       } else if (key === 8) {
         // backspace key
@@ -44,6 +46,13 @@ var app = app || {};
         if (key === 32) e.preventDefault();
         $console.append(char);
       }
+
+      // scroll to include what you are typing
+      if ($('.console').height() + $('h1').height() * 2 > $(window).height()) {
+        $('html, body').animate({
+          scrollTop: `${$('#name-card').height() - $(window).height() + $('h1').height() * 2}`,
+        }, 100);
+      }
     })
   }
 
@@ -53,6 +62,7 @@ var app = app || {};
       return newLine;
     }
     let result = new app.Command($line.text().substring(2)).execute();
+    if (result.clear) return result;
     return `<br><span class="result">${result}</span>${newLine}`;
   }
 
