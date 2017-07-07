@@ -14,13 +14,13 @@ var app = app || {};
   const lib = {};
 
   // bash command help desplays information about the given command
-  lib.help = function(c) {
+  lib.help = function(a) {
     // no arguments - display full list
-    if (!c || (c.split(' ')[0] === '-s' && c.split(' ').length === 1)) {
-      return `These shell commands are defined internally.  Type \`help' to see this list.<br>Type \`help name' to find out more about the function \`name'.<br><br><span class="col-list">${Object.keys(lib).map(e => `${e} ${lib[e].args}`).join('<br>')}</span>`;
+    if (!a || (a.split(' ')[0] === '-s' && a.split(' ').length === 1)) {
+      return `These shell commands are defined internally.  Type \`help' to see this list.<br>Type \`help name' to find out more about the function \`name'.<br><br><span class="col-list">${Object.keys(lib).map(c => `${c} ${lib[c].args}`).join('<br>')}</span>`;
     }
     // check for proper options
-    let opt, patt = c.split(' ');
+    let opt, patt = a.split(' ');
     if (patt[0][0] === '-') {
       opt = patt.shift().substring(1);
     }
@@ -48,19 +48,25 @@ var app = app || {};
   lib.clear.args = '';
   lib.clear.help = 'Clear the terminal screen.';
 
+  lib.echo = function(a) {
+    return a;
+  }
+  lib.echo.args = '[arg ...]';
+  lib.echo.help = 'Output the ARGs.';
+
   // bash command expr evaluates a simple mathematical expression
-  lib.expr = function(c) {
-    if (!c) return 'expr: syntax error';
-    let result = `expr: not a decimal number: ${c.split(' ')[0]}`;
-    if (/\d\s*[\+\/\-\*%()]/.test(c) && !/[A-Za-z_]/.test(c)) {
+  lib.expr = function(a) {
+    if (!a) return 'expr: syntax error'
+    let result = `expr: not a decimal number: ${a.split(' ')[0]}`;
+    if (/\d\s*[\+\/\-\*%()]*/.test(a) && !/[A-Za-z_]/.test(a)) {
       try {
-        result = eval(c);
+        result = eval(a);
       } catch (e) {
-        console.alert('expr error:', e.message);
+        console.warn('expr error:', e.message);
         result = 'expr: syntax error near unexpected token `';
         if (e.message.toLowerCase().includes('unexpected token')) result += e.message.substring(17) + '\'';
         else if (e.message.toLowerCase().includes('missing')) result += '(\'';
-        else if (e.message.toLowerCase().includes('invalid')) result += /\D/.exec(c) + '\'';
+        else if (e.message.toLowerCase().includes('invalid')) result += /\D/.exec(a) + '\'';
         else result = 'expr: syntax error';
       }
     }
