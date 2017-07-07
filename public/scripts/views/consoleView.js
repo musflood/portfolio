@@ -51,7 +51,7 @@ var app = app || {};
       if ($('.console').height() + $('h1').height() * 2 > $(window).height()) {
         $('html, body').animate({
           scrollTop: `${$('#name-card').height() - $(window).height() + $('h1').height() * 2}`,
-        }, 100);
+        }, 50);
       }
     })
   }

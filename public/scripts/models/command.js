@@ -10,6 +10,18 @@ var app = app || {};
     this.arg = text.includes(' ') ? text.substring(text.indexOf(' ') + 1) : '';
   }
 
+  // executes the bash command that corresponds to the exe. if the exe is not a valid command, returns that the command was not found.
+  Command.prototype.execute = function() {
+    // simple math
+    console.log('entered command:', this.exe);
+    console.log('with the argument:',this.arg);
+    try {
+      return lib[this.exe.toLowerCase()](this.arg);
+    } catch (e){
+      return `-bash: ${this.exe}: command not found`;
+    }
+  }
+
   // library of the valid bash commands for the console
   const lib = {};
 
@@ -17,7 +29,12 @@ var app = app || {};
   lib.help = function(a) {
     // no arguments - display full list
     if (!a || (a.split(' ')[0] === '-s' && a.split(' ').length === 1)) {
-      return `These shell commands are defined internally.  Type \`help' to see this list.<br>Type \`help name' to find out more about the function \`name'.<br><br><span class="col-list">${Object.keys(lib).map(c => `${c} ${lib[c].args}`).join('<br>')}</span>`;
+      return `These shell commands are defined internally.  Type \`help' to see this list.<br>
+      Type \`help name' to find out more about the function \`name'.
+      <br><br>
+      <span class="col-list">
+      ${Object.keys(lib).sort().map(c => `${c} ${lib[c].args}`).join('<br>')}
+      </span>`;
     }
     // check for proper options
     let opt, patt = a.split(' ');
@@ -27,9 +44,9 @@ var app = app || {};
     if (opt && opt !== 's') return `help: -${/[^s]/.exec(opt)}: invalid option`;
     // build the help section
     let message = '';
-    patt.forEach(function(p, i) {
+    patt.forEach(function(p) {
       if (lib[p]) {
-        if (i) message += '<br>';
+        if (message) message += '<br>';
         message += `${p}: ${p} ${lib[p].args}`;
         if (!opt) message += `<br><span class='help-text'>${lib[p].help}</span>`;
       }
@@ -74,19 +91,6 @@ var app = app || {};
   }
   lib.expr.args = '[expression]';
   lib.expr.help = 'Evaluate mathematical EXPRESSION.';
-
-  // use eval for js
-  // Command.lib[input command]() will invoke the function
-  Command.prototype.execute = function() {
-    // simple math
-    console.log('entered command:', this.exe);
-    console.log('with the argument:',this.arg);
-    try {
-      return lib[this.exe.toLowerCase()](this.arg);
-    } catch (e){
-      return `-bash: ${this.exe}: command not found`;
-    }
-  }
 
   module.Command = Command;
 
