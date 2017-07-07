@@ -93,7 +93,7 @@ var app = app || {};
           $('.tab[data-locate="info-card"]').focus();
         }
       }
-      if ($(window).scrollTop() >= (triggerHeight + $('#name-card').height())) {
+      if ($(window).scrollTop() >= (triggerHeight * 2 + $('#name-card').height())) {
         mainView.displayProjectCard();
         $('.tab[data-locate="projects-card"]').focus();
       }
