@@ -47,11 +47,13 @@ var app = app || {};
     })
   }
 
-  const nextConsoleLine = function($currLine) {
-    if ($currLine.contents().length === 1) {
+  // takes a line from the console and returns the results from that line.
+  const nextConsoleLine = function($line) {
+    if ($line.contents().length === 1) {
       return newLine;
     }
-    return `<br><span class="result">${$currLine.text().substring(2)}</span>${newLine}`;
+    let result = new app.Command($line.text().substring(2)).execute();
+    return `<br><span class="result">${result}</span>${newLine}`;
   }
 
   // initializes the 'console' on the page. adds a listener to start the console if the user presses 'enter' once the first line has finished typing out itself.
